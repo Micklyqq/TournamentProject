@@ -1,0 +1,256 @@
+@import "zero";
+@import "uikit";
+@import "navigation";
+
+nav li:nth-of-type(1) {
+  background-color: #333438;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.tier_commands {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 630px;
+  color: #d6d6d9;
+  background-color: #2b2c31;
+  margin-top: 33px;
+
+  .top {
+    height: 54.1;
+    padding-top: 22px;
+    padding-left: 25px;
+    h2 {
+      font-size: 18px;
+    }
+  }
+  .top1 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+    border: 1px solid #333438;
+    height: 56.99px;
+    h2 {
+      border-right: 1px solid #d6d6d9;
+      width: 30px;
+      height: 56.99px;
+      padding-top: 15px;
+      text-align: center;
+      font-size: 24px;
+    }
+    img {
+      width: 45px;
+      height: 43.47px;
+      margin-left: 6px;
+      margin-top: 5px;
+    }
+    div {
+      height: 28.98px;
+      width: 123px;
+      margin-left: 6px;
+      margin-top: 10px;
+      p:nth-of-type(1) {
+        font-size: 18px;
+      }
+      p:nth-of-type(2) {
+        font-size: 8px;
+      }
+    }
+  }
+  .top2,
+  .top3,
+  .top4,
+  .top5,
+  .top6,
+  .top7,
+  .top8,
+  .top9,
+  .top10 {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #333438;
+    height: 56.99px;
+    h2 {
+      border-right: 1px solid #d6d6d9;
+      width: 30px;
+      height: 56.99px;
+      padding-top: 15px;
+      text-align: center;
+      font-size: 24px;
+    }
+    img {
+      width: 45px;
+      height: 43.47px;
+      margin-left: 6px;
+      margin-top: 5px;
+    }
+    div {
+      height: 28.98px;
+      width: 123px;
+      margin-left: 6px;
+      margin-top: 10px;
+      p:nth-of-type(1) {
+        font-size: 18px;
+      }
+      p:nth-of-type(2) {
+        font-size: 8px;
+      }
+    }
+  }
+}
+
+.tournament_actual {
+  margin-top: 33px;
+  margin-left: 50px;
+}
+.header_actual {
+  background-color: #2b2c31;
+  width: 572px;
+  height: 46.37px;
+  text-align: center;
+  color: #d6d6d9;
+  h2 {
+    padding-top: 17px;
+  }
+}
+
+.tournament_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 440px;
+  width: 572px;
+  margin-top: 18px;
+}
+.header_actual {
+  padding-top: 14px;
+}
+.tournament_block {
+  background-color: #2b2c31;
+  border: 1px solid #333438;
+  width: 280px;
+  height: 135.24px;
+  margin-right: 3px;
+  img {
+    float: left;
+    margin-left: 10px;
+    margin-top: 11px;
+  }
+  h1 {
+    margin-top: 18px;
+    margin-left: 124px;
+  }
+  p {
+    color: #8f8f91;
+    font-size: 11px;
+    &:nth-of-type(1) {
+      margin-top: 13px;
+    }
+  }
+}
+
+.authorization {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 385.44px;
+  background-color: #26272c;
+  margin-top: 33px;
+  margin-left: 30px;
+
+  .header_auth {
+    background-color: #2b2c31;
+    height: 54.1px;
+    padding-left: 24px;
+    padding-top: 20px;
+  }
+  input[type="email"] {
+    width: 260px;
+    height: 38.64px;
+    background-color: #2b2c31;
+    border: 1px solid #3b3c40;
+    margin-left: 20px;
+    margin-top: 40px;
+    color: #616165;
+    &:hover {
+      background-color: #3c3d41;
+      border: 1px solid #878787;
+      color: #ffffff;
+    }
+    &:focus {
+      background-color: #3c3d41;
+      border: 1px solid #bcbcbc;
+      color: #ffffff;
+    }
+  }
+  input[type="password"] {
+    width: 260px;
+    height: 38.64px;
+    background-color: #2b2c31;
+    border: 1px solid #3b3c40;
+    margin-left: 20px;
+    margin-top: 16px;
+    color: #5c5c60;
+    &:hover {
+      background-color: #3c3d41;
+      border: 1px solid #878787;
+      color: #ffffff;
+    }
+    &:focus {
+      background-color: #3c3d41;
+      border: 1px solid #bcbcbc;
+      color: #ffffff;
+    }
+  }
+  .remember_auth {
+    width: 230px;
+    height: 15px;
+    margin-top: 18px;
+    margin-left: 20px;
+    p {
+      padding-left: 20px;
+      color: #c2c2c4;
+      font-size: 13px;
+    }
+  }
+  .remember_user {
+    display: block;
+    float: left;
+  }
+  button {
+    background-color: #333438;
+    width: 260px;
+    height: 38.64px;
+    color: #c2c2c4;
+    border-radius: 5px;
+    margin-top: 17px;
+    margin-left: 20px;
+    &:hover {
+      background-color: #d42c2f;
+      color: #ffffff;
+    }
+    &:active {
+      background-color: #d42c2f;
+      border: 1px solid #878787;
+    }
+  }
+  .remember_register {
+    margin-top: 18px;
+    margin-left: 30px;
+    a {
+      color: #8f8f91;
+      font-size: 13px;
+    }
+    div {
+      background-color: #45464a;
+      width: 2px;
+      height: 10px;
+      display: inline-block;
+    }
+  }
+}

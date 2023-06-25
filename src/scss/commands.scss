@@ -1,0 +1,157 @@
+@import "zero";
+@import "uikit";
+@import "navigation";
+@import "profile";
+
+nav li:nth-of-type(3) {
+  background-color: #333438;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.commands_menu {
+  display: flex;
+  flex-direction: column;
+  width: 911px;
+  .commands_search {
+    display: flex;
+    flex-direction: row;
+    width: 911px;
+    height: 46px;
+    background-color: #26272c;
+    margin-top: 33px;
+    input {
+      background-color: #2b2c31;
+      border: 1px solid #333438;
+      width: 606px;
+      height: 24px;
+      color: #5c5c60;
+      margin-left: 14px;
+      margin-top: 11px;
+      &:hover {
+        background-color: #3c3d41;
+        border: 1px solid #878787;
+        color: #ffffff;
+      }
+      &:focus {
+        background-color: #3c3d41;
+        border: 1px solid #bcbcbc;
+        color: #ffffff;
+      }
+    }
+    .button_search {
+      width: 100px;
+      height: 23px;
+      background-color: #333438;
+      border-radius: 5px;
+      color: #c2c2c4;
+      margin-left: 9px;
+      margin-top: 11px;
+      &:hover {
+        background-color: #d42c2f;
+        color: #ffffff;
+      }
+      &:active {
+        background-color: #d42c2f;
+        color: #ffffff;
+        border: 1px solid #878787;
+      }
+    }
+    .create_command {
+      width: 272px;
+      height: 23px;
+      background-color: #333438;
+      border-radius: 5px;
+      color: #c2c2c4;
+      margin-left: 9px;
+      margin-top: 11px;
+      margin-right: 10px;
+      &:hover {
+        background-color: #d42c2f;
+        color: #ffffff;
+      }
+      &:active {
+        background-color: #d42c2f;
+        color: #ffffff;
+        border: 1px solid #878787;
+      }
+    }
+  }
+
+  .commands_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 911px;
+    height: 200px;
+    .command_block {
+      display: flex;
+      flex-direction: row;
+      width: 450px;
+      height: 135px;
+      border-radius: 5px;
+      background-color: #2b2c31;
+      margin-top: 25px;
+      &:nth-of-type(even) {
+        margin-left: 11px;
+      }
+      .command_image {
+        margin-left: 21px;
+        margin-top: 16px;
+        p {
+          color: #d6d6d9;
+          font-size: 11px;
+          text-align: center;
+          margin-top: 11px;
+        }
+      }
+      .command_info {
+        width: 278px;
+        height: 101px;
+        margin-left: 35px;
+        margin-top: 20px;
+        & > div {
+          display: flex;
+          flex-direction: row;
+        }
+        h2 {
+          margin-bottom: 7px;
+        }
+        p {
+          color: #8f8f91;
+          font-size: 11px;
+        }
+        .button_command_info {
+          width: 136px;
+          height: 20px;
+          margin-top: 19px;
+          background-color: #333438;
+          border-radius: 5px;
+          text-align: center;
+          padding-top: 5px;
+          &:hover {
+            background-color: #d42c2f;
+            color: #ffffff;
+          }
+          &:active {
+            background-color: #d42c2f;
+            color: #ffffff;
+            border: 1px solid #878787;
+          }
+
+          &:nth-last-of-type(1) {
+            margin-left: 6px;
+          }
+
+          p {
+            font-size: 9px;
+            color: #c2c2c4;
+          }
+        }
+      }
+    }
+  }
+}

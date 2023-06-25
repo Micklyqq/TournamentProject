@@ -1,0 +1,246 @@
+@import "zero";
+@import "uikit";
+@import "navigation";
+@import "profile";
+nav li:nth-of-type(3) {
+  background-color: #333438;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.main_info {
+  height: 107px;
+  margin-left: 53px;
+  img {
+    display: block;
+    float: left;
+    width: 120px;
+    height: 120px;
+  }
+}
+h1 {
+  font-size: 30px;
+  margin-left: 53px;
+  margin-top: 37px;
+  margin-bottom: 32px;
+}
+h2 {
+  font-size: 30px;
+  margin-left: 53px;
+  margin-top: 37px;
+  margin-bottom: 32px;
+}
+
+.commands_info {
+  background-color: #26272c;
+  width: 904px;
+  height: 2900px;
+  margin-top: 34px;
+  color: #c2c2c4;
+}
+.command_about {
+  display: flex;
+  flex-direction: row;
+}
+.command_about_first {
+  margin-left: 24px;
+  color: #8f8f91;
+  font-size: 13px;
+  margin-top: 20px;
+}
+.command_about_second {
+  margin-left: 24px;
+  color: #c2c2c4;
+  font-size: 13px;
+  margin-top: 20px;
+}
+.info_big {
+  margin-top: 24px;
+  margin-left: 53px;
+  margin-right: 29px;
+  p {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+}
+.command_stat {
+  display: flex;
+  flex-direction: column;
+}
+.command_stat_element {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 442px;
+  height: 58px;
+  background-color: #2b2c31;
+  margin-top: 2px;
+  margin-left: 53px;
+}
+.win {
+  color: #36a669;
+}
+.lose {
+  color: #aa2b2f;
+}
+.team_composition {
+  border-collapse: collapse;
+  margin-left: 53px;
+  margin-top: 37px;
+  tr {
+    &:nth-of-type(1) {
+      background-color: #26272c;
+      font-size: 11px;
+      color: #777779;
+    }
+    background-color: #2b2c31;
+    font-size: 13px;
+    border-top: 2px solid #26272c;
+  }
+  td {
+    &:nth-of-type(1) {
+      width: 291px;
+    }
+    &:nth-of-type(2) {
+      width: 312px;
+    }
+    &:nth-of-type(3) {
+      width: 80px;
+    }
+    &:nth-of-type(4) {
+      width: 148px;
+    }
+    div {
+      display: flex;
+      flex-direction: row;
+      div {
+        display: flex;
+        flex-direction: column;
+        line-height: 15px;
+        padding: 10px;
+        p {
+          &:nth-last-of-type(1) {
+            color: #777779;
+          }
+        }
+      }
+    }
+  }
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+.match_time {
+  display: flex;
+  flex-direction: column;
+  margin-top: 29px;
+  margin-left: 49px;
+  margin-right: 29px;
+  width: 830px;
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+.game_future {
+  margin-top: 20px;
+}
+.game_past {
+  margin-top: 20px;
+}
+.matchtime_element {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 62px;
+  background-color: #2b2c31;
+  margin-top: 2px;
+}
+.matchtime_element_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 368px;
+  height: 33px;
+  font-size: 15px;
+  img {
+    width: 26px;
+    height: 26px;
+  }
+}
+.date_red {
+  color: #d42c2f;
+}
+.time {
+  color: #7a7a7c;
+  font-size: 11px;
+  margin-left: 5px;
+}
+.show_more {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 34px;
+  background-color: #2b2c31;
+  p {
+    color: #7a7a7c;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+}
+.tournament_list {
+  border-collapse: collapse;
+  margin-left: 53px;
+  margin-top: 37px;
+
+  tr {
+    &:nth-of-type(1) {
+      background-color: #26272c;
+      font-size: 11px;
+      color: #777779;
+    }
+    background-color: #2b2c31;
+    font-size: 18px;
+    border-top: 2px solid #26272c;
+  }
+  td {
+    &:nth-of-type(1) {
+      width: 200px;
+      font-size: 11px;
+      color: #777779;
+    }
+    &:nth-of-type(2) {
+      width: 312px;
+    }
+    &:nth-of-type(3) {
+      width: 318px;
+    }
+    div {
+      display: flex;
+      flex-direction: row;
+      div {
+        display: flex;
+        flex-direction: column;
+        line-height: 30px;
+        padding: 10px;
+      }
+    }
+  }
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
