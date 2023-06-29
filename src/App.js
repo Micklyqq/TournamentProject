@@ -1,33 +1,23 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Navigation from "./components/Navigation";
-import Tier_commands from "./components/Tier_commands";
-import "./css/mainpage.css";
-import "./css/tournaments.css";
-import "./css/commands.css";
-import Tournaments_actual from "./components/Tournaments_actual";
-import Authorization from "./components/Authorization";
-import Search_tournaments from "./components/Search_tournaments";
-import Tournament_block from "./components/Tournament_block";
-import Profile from "./components/Profile";
-import Search_commands from "./components/Search_commands";
-import Command_block from "./components/Command_block";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import CommandsPage from "./pages/CommandsPage";
+import TournamentPage from "./pages/TournamentsPage";
+import Layout from "./components/Layout";
+import CabinetPage from "./pages/CabinetPage";
 
 function App() {
   return (
-    <div>
-      <Navigation />
-      <main>
-        <section class="commands_menu">
-          <Search_commands />
-          <div class="commands_list">
-            <Command_block />
-            <Command_block />
-          </div>
-        </section>
-        <Profile />
-      </main>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="tournaments" element={<TournamentPage />} />
+          <Route path="commands" element={<CommandsPage />} />
+          <Route path="cabinet" element={<CabinetPage />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
