@@ -1,37 +1,38 @@
 import React from "react";
 import "../css/tournaments.css";
+import ProfileImage from "../img/profile_picture.png";
 
 function Profile() {
   return (
-    <section class="profile">
-      <div class="profile_header">
+    <section className="profile">
+      <div className="profile_header">
         <h2>Профиль</h2>
       </div>
-      <div class="profile_info">
-        <div class="profile_picture">
-          <img src="img/profile_picture.png" alt="" />
+      <div className="profile_info">
+        <div className="profile_picture">
+          <img src={ProfileImage} alt="" />
           <a href="#">Изменить</a>
         </div>
-        <p class="nickname">Gamer334</p>
-        <p class="username_info">Команда:OG</p>
-        <p class="username_info">Rating: 3400</p>
+        <p className="nickname">Gamer334</p>
+        <p className="username_info">Команда:OG</p>
+        <p className="username_info">Rating: 3400</p>
       </div>
       <form
         action="#"
         method="post"
-        enctype="multipart/form-data"
-        class="tournaments_search"
+        encType="multipart/form-data"
+        className="tournaments_search"
       >
-        <button type="submit" class="profile_buttons">
+        <button type="submit" className="profile_buttons">
           Настройки
         </button>
-        <button type="submit" class="profile_buttons">
+        <button type="submit" className="profile_buttons">
           Личные сообщения
         </button>
-        <button type="submit" class="profile_buttons">
+        <button type="submit" className="profile_buttons">
           Смена ника
         </button>
-        <button type="submit" class="profile_buttons">
+        <button type="submit" className="profile_buttons">
           Выйти
         </button>
       </form>
