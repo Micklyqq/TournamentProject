@@ -1,9 +1,12 @@
 import React from "react";
 import "../css/tournaments.css";
 import internationalImage from "../img/International_big.png";
-import { Link } from "react-router-dom";
-function TournamentBlock({ tournament, tournamentId }) {
+import { Link, useLocation } from "react-router-dom";
+import internationalSmall from "../img/International.png";
+function TournamentBlock({ tournament }) {
+  const currentUrl = useLocation().pathname;
   const {
+    id,
     tournamentName,
     tournamentDescription,
     tournamentCommandNumber,
@@ -13,7 +16,7 @@ function TournamentBlock({ tournament, tournamentId }) {
     tournamentEndDate,
     tournamentPrizeFund,
   } = tournament;
-  return (
+  const tournamentView = (
     <div className="tournament_block">
       <div className="tournament_image">
         <img src={internationalImage} alt="" />
@@ -34,7 +37,7 @@ function TournamentBlock({ tournament, tournamentId }) {
             <p>Подать заявку на участие</p>
           </button>
         </a>
-        <Link to={`/tournaments/${tournamentId}`}>
+        <Link to={`/tournaments/${id}`}>
           <div className="go_to_tournament">
             <p>Перейти к турниру</p>
           </div>
@@ -42,6 +45,19 @@ function TournamentBlock({ tournament, tournamentId }) {
       </div>
     </div>
   );
+  const mainPageView = (
+    <Link to={`/tournaments/${id}`}>
+      <div className="tournament_block">
+        <img src={internationalSmall} alt="" />
+        <h1>{tournamentName}</h1>
+        <p>Дата начала: {tournamentStartDate}</p>
+        <p>Дата завершения: {tournamentEndDate}</p>
+        <p>Призовой фонд: {tournamentPrizeFund}</p>
+      </div>
+    </Link>
+  );
+
+  return <>{currentUrl != "/" ? tournamentView : mainPageView}</>;
 }
 
 export default TournamentBlock;
