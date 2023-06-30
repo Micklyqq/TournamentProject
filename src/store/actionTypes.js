@@ -1,0 +1,2 @@
+export const TOURNAMENT_ADD = "TOURNAMENT_ADD";
+export const COMMAND_ADD = "COMMAND_ADD";
