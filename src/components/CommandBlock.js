@@ -1,17 +1,19 @@
 import React from "react";
 import "../css/commands.css";
-
-function CommandBlock() {
+import { Link } from "react-router-dom";
+import commandImage from "../img/Sectet_big.png";
+function CommandBlock({ command }) {
+  const { id, commandName, commandGame } = command;
   return (
     <div className="command_block">
       <div className="command_image">
-        <img src="img/Sectet_big.png" alt="" />
+        <img src={commandImage} alt="" />
         <p>Rating:10900</p>
       </div>
       <div className="command_info">
-        <h2>Team Secret</h2>
-        <p>Количество игроков: 8 из 10</p>
-        <p>Игры: DOTA2/CS:GO/LEAGUE OF LEGENDS</p>
+        <h2>{commandName}</h2>
+        <p>Количество игроков: 0 из 10</p>
+        <p>Игры: {commandGame}</p>
         <p>Набор: открыт</p>
 
         <div>
@@ -21,9 +23,9 @@ function CommandBlock() {
             </a>
           </div>
           <div className="button_command_info">
-            <a href="commands_in.html">
+            <Link to={`/commands/${id}`}>
               <p>Перейти к команде</p>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
