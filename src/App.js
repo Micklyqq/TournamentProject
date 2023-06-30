@@ -6,6 +6,7 @@ import TournamentPage from "./pages/TournamentsPage";
 import Layout from "./components/Layout";
 import CabinetPage from "./pages/CabinetPage";
 import TournamentIn from "./pages/TournamentIn";
+import CommandIn from "./pages/CommandIn";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="tournaments/" element={<TournamentPage />} />
           <Route path="tournaments/:id" element={<TournamentIn />} />
           <Route path="commands" element={<CommandsPage />} />
+          <Route path="commands/:id" element={<CommandIn />} />
           <Route path="cabinet" element={<CabinetPage />} />
         </Route>
       </Routes>
