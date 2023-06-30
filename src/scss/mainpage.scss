@@ -2,10 +2,6 @@
 @import "uikit";
 @import "navigation";
 
-nav li:nth-of-type(1) {
-  background-color: #333438;
-}
-
 main {
   display: flex;
   flex-direction: row;

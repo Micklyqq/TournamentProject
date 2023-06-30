@@ -9,8 +9,7 @@
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :focus,
@@ -95,8 +94,7 @@ input::-ms-clear {
 button,
 input[type=submit] {
   display: inline-block;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background-color: transparent;
   background: none;
   cursor: pointer;
@@ -153,16 +151,11 @@ nav a {
   color: #c2c2c4;
 }
 nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #26272c;
   height: 61.82px;
   width: 1250px;
@@ -201,28 +194,18 @@ nav ul a:visited {
   color: #c2c2c4;
 }
 
-nav li:nth-of-type(1) {
+.active-link {
   background-color: #333438;
 }
 
 main {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .tier_commands {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 300px;
   height: 630px;
   color: #d6d6d9;
@@ -238,13 +221,8 @@ main {
   font-size: 18px;
 }
 .tier_commands .top1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   margin-top: 16px;
   border: 1px solid #333438;
   height: 56.99px;
@@ -284,13 +262,8 @@ main {
 .tier_commands .top8,
 .tier_commands .top9,
 .tier_commands .top10 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   border: 1px solid #333438;
   height: 56.99px;
 }
@@ -378,18 +351,10 @@ main {
 }
 
 .tournament_list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
   height: 440px;
   width: 572px;
   margin-top: 18px;
@@ -424,13 +389,8 @@ main {
 }
 
 .authorization {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 300px;
   height: 385.44px;
   background-color: #26272c;
@@ -526,4 +486,4 @@ main {
   width: 2px;
   height: 10px;
   display: inline-block;
-}
+}/*# sourceMappingURL=mainpage.css.map */
