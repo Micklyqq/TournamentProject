@@ -288,10 +288,6 @@ nav ul a:visited {
   margin-top: 16px;
 }
 
-nav li:nth-of-type(2) {
-  background-color: #333438;
-}
-
 main {
   display: flex;
   flex-direction: row;
@@ -629,14 +625,14 @@ main {
   margin-top: 2px;
 }
 
-.commands_list {
+.commandsListInTournament {
   width: 814px;
   height: 788px;
   margin-top: 29px;
   margin-left: 49px;
   margin-right: 29px;
 }
-.commands_list h2 {
+.commandsListInTournament h2 {
   font-size: 30px;
 }
 

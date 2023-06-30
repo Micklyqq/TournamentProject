@@ -2,9 +2,7 @@
 @import "uikit";
 @import "navigation";
 @import "profile";
-nav li:nth-of-type(3) {
-  background-color: #333438;
-}
+
 main {
   display: flex;
   flex-direction: row;
@@ -20,18 +18,6 @@ main {
     height: 120px;
   }
 }
-h1 {
-  font-size: 30px;
-  margin-left: 53px;
-  margin-top: 37px;
-  margin-bottom: 32px;
-}
-h2 {
-  font-size: 30px;
-  margin-left: 53px;
-  margin-top: 37px;
-  margin-bottom: 32px;
-}
 
 .commands_info {
   background-color: #26272c;
@@ -39,6 +25,18 @@ h2 {
   height: 2900px;
   margin-top: 34px;
   color: #c2c2c4;
+  h1 {
+    font-size: 30px;
+    margin-left: 53px;
+    margin-top: 37px;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 30px;
+    margin-left: 53px;
+    margin-top: 37px;
+    margin-bottom: 32px;
+  }
 }
 .command_about {
   display: flex;
