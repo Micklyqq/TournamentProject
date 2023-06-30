@@ -1,7 +1,7 @@
 import * as actions from "./actionTypes";
 import { nanoid } from "nanoid";
 
-export default function reducer(state = [], action) {
+export default function tournamentsReducer(state = [], action) {
   switch (action.type) {
     case actions.TOURNAMENT_ADD:
       return [
@@ -18,5 +18,7 @@ export default function reducer(state = [], action) {
           tournamentPrizeFund: action.payload.tournamentPrizeFund,
         },
       ];
+    default:
+      return state;
   }
 }
