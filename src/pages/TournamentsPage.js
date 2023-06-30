@@ -7,7 +7,7 @@ import TournamentsList from "../components/TournamentsList";
 import { useSelector } from "react-redux";
 function TournamentPage() {
   const [modalActive, setModalActive] = useState(false);
-  const tournaments = useSelector((state) => state);
+  const tournaments = useSelector((state) => state.tournaments);
   return (
     <div>
       <main>
