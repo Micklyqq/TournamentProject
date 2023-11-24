@@ -1,8 +1,15 @@
 import React from "react";
 import "../css/tournaments.css";
 import ProfileImage from "../img/profile_picture.png";
+import {UserStore} from "../store/UserStore";
 
 function Profile() {
+    const setAuth = UserStore(state=>state.setIsAuth);
+    const exit = ()=>{
+        setAuth(false);
+        localStorage.setItem('token','');
+    }
+
   return (
     <section className="profile">
       <div className="profile_header">
@@ -32,10 +39,11 @@ function Profile() {
         <button type="submit" className="profile_buttons">
           Смена ника
         </button>
-        <button type="submit" className="profile_buttons">
-          Выйти
-        </button>
+
       </form>
+        <button onClick={exit} className="profile_buttons">
+            Выйти
+        </button>
     </section>
   );
 }
