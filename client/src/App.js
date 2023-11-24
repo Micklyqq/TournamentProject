@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import CommandsPage from "./pages/CommandsPage";
@@ -7,8 +7,22 @@ import Layout from "./components/Layout";
 import CabinetPage from "./pages/CabinetPage";
 import TournamentIn from "./pages/TournamentIn";
 import CommandIn from "./pages/CommandIn";
+import {UserStore} from "./store/UserStore";
+import {check} from "./api/userApi";
 
 function App() {
+  const user = UserStore(state=>state._user)
+  const isAuth = UserStore(state=>state._isAuth)
+  const setAuth = UserStore(state=>state.setIsAuth)
+  const setUser = UserStore(state=>state.setUser)
+  useEffect(() => {
+    check().then(data=>{
+      if(data){
+        setUser(true);
+        setAuth(true);}
+
+    })
+  }, []);
   return (
     <>
       <Routes>
