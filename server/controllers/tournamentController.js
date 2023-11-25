@@ -7,11 +7,12 @@ class TournamentController{
     async create(req,res,next){
 
        try {
-           const {name,description,date,time,prize,gameId} = req.body;
-           const {logo} = req.files;
+           let {name,description,date,size,prize,gameId} = req.body;
+           gameId = Number(gameId);
+           //const {logo} = req.files;
            let fileName = uuid.v4()+".jpg";
-           const tournament = await Tournament.create({name,logo:fileName,description,date,time,prize,gameId});
-           logo.mv(path.resolve(__dirname,'..','static',fileName));
+           const tournament = await Tournament.create({name,logo:fileName,description,date,size,prize,gameId});
+           //logo.mv(path.resolve(__dirname,'..','static',fileName));
            return res.json(tournament);
        }
     catch (e) {
