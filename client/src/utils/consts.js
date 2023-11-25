@@ -1,0 +1,5 @@
+export const COMMAND_ROUTE = "/commands"
+export const TOURNAMENT_ROUTE = "/tournaments"
+export const CREATE_TOURNAMENT = "/createtournament"
+export const COMMAND_CREATE = "/createcommand"
+export const MAIN_ROUTE = "/"
