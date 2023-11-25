@@ -22,9 +22,9 @@ const Tournament = sequelize.define('tournament',{
     name:{type:DataTypes.STRING,unique:true, allowNull:false},
     logo:{type:DataTypes.STRING,allowNull: false},
     description:{type:DataTypes.TEXT,allowNull:false},
-    time:{type:DataTypes.TIME,allowNull:false},
     date:{type:DataTypes.DATE,allowNull:false},
     prize:{type:DataTypes.STRING,defaultValue:0},
+    size:{type:DataTypes.INTEGER,allowNull:false}
 })
 
 const Role = sequelize.define('role',{
