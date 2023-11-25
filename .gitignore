@@ -27,6 +27,7 @@ yarn-error.log*
 
 
 /server/static/
+/client/src/static/
 
 # dotenv environment variable files
 .env
