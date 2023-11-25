@@ -2,6 +2,9 @@ const ApiError = require("../error/ApiError")
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {User,UserRole,Role } = require("../models/model");
+const uuid = require('uuid');
+const path = require("path");
+const fs = require('fs');
 
 
 const generateJwt = (id,email,roleId)=>{
@@ -68,6 +71,40 @@ class UserController{
             where:{id}
         })
         return res.json(userDestroy);
+    }
+
+    async profileGet(req,res,next){
+        const {id} = req.body;
+        const {userName,logo} = await User.findOne({where: {id}});
+
+        return res.json({userName,logo});
+    }
+
+    async profilePost(req,res,next){
+
+          const {id,userName} = req.body;
+        const {logo} = req.files
+        let fileName = uuid.v4()+".jpg";
+          let user;
+          user = await User.findOne({where:{id}});
+          const oldLogo = path.join(__dirname,'..','static',user.logo);
+
+        fs.unlinkSync (oldLogo)
+          if(userName && !logo){
+              user = await User.update({userName},{where: {id}});
+
+          }
+          else if(!userName && logo){
+              user = await User.update({logo:fileName},{where: {id}});
+
+          }
+          else if(userName && logo){
+              user = await User.update({userName,logo:fileName},{where: {id}});
+
+          }
+        logo.mv(path.resolve(__dirname,'..','static',fileName));
+        return res.json(user);
+
     }
 }
 
