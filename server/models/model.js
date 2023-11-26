@@ -24,7 +24,8 @@ const Tournament = sequelize.define('tournament',{
     description:{type:DataTypes.TEXT,allowNull:false},
     date:{type:DataTypes.DATE,allowNull:false},
     prize:{type:DataTypes.STRING,defaultValue:0},
-    size:{type:DataTypes.INTEGER,allowNull:false}
+    size:{type:DataTypes.INTEGER,allowNull:false},
+    status:{type:DataTypes.BOOLEAN,defaultValue: false}
 })
 
 const Role = sequelize.define('role',{
@@ -70,6 +71,12 @@ Match.belongsTo(Tournament);
 
 Game.hasMany(Tournament);
 Tournament.belongsTo(Game);
+
+User.hasOne(Team);
+Team.belongsTo(User);
+
+User.hasOne(Tournament);
+Tournament.belongsTo(User);
 
 module.exports={
     User,Team,UserRole,Tournament,Role,Game,Match
