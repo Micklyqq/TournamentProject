@@ -11,17 +11,18 @@ import {
 
 } from "./utils/consts";
 import CommandsPage from "./pages/CommandsPage";
-import {createCommand} from "./pages/createCommand";
-import {createTournament} from "./pages/createTournament";
+import {CreateCommand} from "./pages/CreateCommand";
+import {CreateTournament} from "./pages/CreateTournament";
+
 
 export const authRoutes = [
     {
         path: COMMAND_CREATE,
-        Component:createCommand ,
+        Component:CreateCommand ,
     },
     {
         path: CREATE_TOURNAMENT,
-        Component: createTournament,
+        Component:CreateTournament,
     },
 ];
 
