@@ -15,6 +15,7 @@ const Team = sequelize.define('team',{
     name:{type:DataTypes.STRING,unique:true, allowNull:false},
     logo:{type:DataTypes.STRING,allowNull: false},
     description:{type:DataTypes.TEXT,allowNull:false},
+    size:{type:DataTypes.INTEGER,defaultValue:5}
 })
 
 const Tournament = sequelize.define('tournament',{
