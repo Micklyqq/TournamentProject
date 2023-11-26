@@ -70,7 +70,7 @@ function Authorization() {
                       </>)}
             </section>
         )
-      :(<Profile/>)
+      :(<Profile isAuth={isAuth} setAuth={setAuth} setUser={setUser} />)
 
   );
 }
