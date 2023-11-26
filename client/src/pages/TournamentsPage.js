@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, {useEffect} from "react";
 import "../css/tournaments.css";
-import Profile from "../components/Profile";
-import Modal from "../components/Modal";
-import CreateNewTournament from "../components/CreateNewTournament";
 import TournamentsList from "../components/TournamentsList";
-import { useSelector } from "react-redux";
+import Authorization from "../components/Authorization";
+import {Link} from 'react-router-dom';
+import {CREATE_TOURNAMENT} from "../utils/consts";
+import {TournamentStore} from "../store/TournamentStore";
+import {getAllGames, getTournaments} from "../api/tournamentApi";
 function TournamentPage() {
-  const [modalActive, setModalActive] = useState(false);
-  const tournaments = useSelector((state) => state.tournaments);
+
+ const tournaments = TournamentStore(state => state._tournaments);
+const setTournaments = TournamentStore(state=>state.setTournament);
+    const setGame = TournamentStore(state=>state.setGame)
+
+    useEffect(() => {
+        getTournaments().then((data)=>setTournaments(data));
+        getAllGames().then((data)=>setGame(data));
+
+    }, []);
+
+
+
+
   return (
     <div>
       <main>
@@ -26,12 +39,13 @@ function TournamentPage() {
             <button type="submit" className="button_search">
               Поиск
             </button>
+            <Link to={CREATE_TOURNAMENT}>
             <div
               className="create_tournament"
-              onClick={() => setModalActive(true)}
             >
               Создать турнир
             </div>
+            </Link>
           </form>
           <div className="tournaments_list">
             {tournaments && tournaments.length > 0 && (
@@ -39,11 +53,9 @@ function TournamentPage() {
             )}
           </div>
         </section>
-        <Profile />
+        <Authorization />
       </main>
-      <Modal active={modalActive} setActive={setModalActive}>
-        <CreateNewTournament />
-      </Modal>
+
     </div>
   );
 }

@@ -1,38 +1,37 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "../css/tournaments_in.css";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import internationalImage from "../img/International_big.png";
 import liquidLogo from "../img/Liquid.png";
+import Authorization from "../components/Authorization";
+import {TournamentStore} from "../store/TournamentStore";
+import {getOneTournament} from "../api/tournamentApi";
 
 function TournamentIn() {
-  const tournaments = useSelector((state) => state.tournaments);
+  const tournament = TournamentStore(state=>state._tournaments);
+  const setTournament = TournamentStore(state=>state.setTournament)
   const { id } = useParams();
-  let currentTournament;
-  if (tournaments && tournaments.length > 0) {
-    currentTournament = tournaments.find((item) => item.id == id);
-  }
+  useEffect(() => {
+    getOneTournament(id).then((data)=>setTournament(data));
+  }, []);
   return (
     <main>
       <section className="tournament_info">
-        <h1 className="header1">{currentTournament?.tournamentName}</h1>
+        <h1 className="header1">{tournament?.name}</h1>
         <div className="image_info">
-          <img src={internationalImage} alt="" />
+          <img src={process.env.REACT_APP_API_URL+tournament.logo} alt="" />
           <div className="image_info_text">
             <div className="image_info_1">
               <p>Дата начала:</p>
-              <p>Дата завершения:</p>
               <p>Призовой фонд:</p>
             </div>
             <div className="image_info_2">
-              <p>{currentTournament?.tournamentStartDate}</p>
-              <p>{currentTournament?.tournamentEndDate}</p>
-              <p>{currentTournament?.tournamentPrizeFund}</p>
+              <p>{tournament?.date}</p>
+              <p>{tournament?.prize}</p>
             </div>
           </div>
         </div>
         <div className="info_big">
-          <p>{currentTournament?.tournamentDescription}</p>
+          <p>{tournament?.description}</p>
         </div>
         <div className="results">
           <h2>Результаты</h2>
@@ -910,39 +909,7 @@ function TournamentIn() {
           </div>
         </div>
       </section>
-      <section className="profile">
-        <div className="profile_header">
-          <h2>Профиль</h2>
-        </div>
-        <div className="profile_info">
-          <div className="profile_picture">
-            <img src="img/profile_picture.png" alt="" />
-            <a href="#">Изменить</a>
-          </div>
-          <p className="nickname">Gamer334</p>
-          <p className="username_info">Команда:OG</p>
-          <p className="username_info">Rating: 3400</p>
-        </div>
-        <form
-          action="#"
-          method="post"
-          encType="multipart/form-data"
-          className="tournaments_search"
-        >
-          <a href="#">
-            <div className="profile_buttons">Настройки</div>
-          </a>
-          <a href="#">
-            <div className="profile_buttons">Личные сообщения</div>
-          </a>
-          <a href="#">
-            <div className="profile_buttons">Смена ника</div>
-          </a>
-          <button type="submit" className="profile_exitbutton">
-            Выйти
-          </button>
-        </form>
-      </section>
+      <Authorization/>
     </main>
   );
 }

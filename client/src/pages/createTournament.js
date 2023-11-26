@@ -1,7 +1,6 @@
 import "../css/createTournament.css";
-import React, {useEffect, useState} from "react";
-import {UserStore} from "../store/UserStore";
-import {createTournament, getAllGames} from "../api/tournamentApi";
+import React, { useState} from "react";
+import {createTournament} from "../api/tournamentApi";
 import {TournamentStore} from "../store/TournamentStore";
 import {v4 as uuidv4} from "uuid";
 import { Navigate } from 'react-router-dom';
