@@ -253,6 +253,7 @@ nav ul a:visited {
   border-radius: 5px;
   text-align: center;
   padding-top: 14px;
+  cursor: pointer;
 }
 .profile .profile_buttons:hover {
   background-color: #d42c2f;

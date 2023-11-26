@@ -5,6 +5,8 @@ import {jwtDecode} from "jwt-decode";
 import {getData} from "../api/userApi";
 import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png";
 import {Spinner} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {PROFILE_ROUTE} from "../utils/consts";
 
 function Profile({setAuth,isAuth,setUser}) {
 
@@ -46,23 +48,24 @@ function Profile({setAuth,isAuth,setUser}) {
         <p className="username_info">Команда:OG</p>
         <p className="username_info">Rating: 3400</p>
       </div>
-      <form
-        action="#"
-        method="post"
-        encType="multipart/form-data"
-        className="tournaments_search"
-      >
-        <button type="submit" className="profile_buttons">
-          Настройки
-        </button>
-        <button type="submit" className="profile_buttons">
-          Личные сообщения
-        </button>
-        <button type="submit" className="profile_buttons">
-          Смена ника
-        </button>
 
-      </form>
+
+        <div className="tournaments_search">
+            <Link to={PROFILE_ROUTE}>
+        <div className="profile_buttons">
+            Настройки
+        </div>
+            </Link>
+        <div className="profile_buttons">
+          Личные сообщения
+        </div>
+
+
+        <div className="profile_buttons">
+          Смена ника
+        </div>
+
+      </div>
         <button onClick={exit} className="profile_buttons">
             Выйти
         </button>

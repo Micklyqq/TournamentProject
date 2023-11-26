@@ -18,7 +18,7 @@ function App() {
     getAllGames().then((data)=>setGame(data));
     check().then(data=>{
       if(data){
-        setUser(true);
+        setUser(data);
         setAuth(true);}
     }).finally(()=>setLoading(false));
 
