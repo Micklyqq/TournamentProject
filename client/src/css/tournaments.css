@@ -222,16 +222,16 @@ nav ul a:visited {
 }
 .profile .profile_info .profile_picture {
   float: left;
-  width: 67px;
-  height: 68px;
+  max-width: 60px;
+  max-height: 60px;
   margin-left: 20px;
   margin-top: 20px;
 }
 .profile .profile_info .profile_picture a {
-  display: inline-block;
   color: #8f8f91;
   font-size: 10px;
   margin-left: 11px;
+  object-fit: cover;
 }
 .profile .profile_info .nickname {
   margin-top: 24px;
@@ -508,4 +508,6 @@ main {
 .createTournamentButton:hover {
   background-color: #d42c2f;
   color: #ffffff;
-}/*# sourceMappingURL=tournaments.css.map */
+}
+
+/*# sourceMappingURL=tournaments.css.map */
