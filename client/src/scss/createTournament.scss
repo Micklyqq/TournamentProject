@@ -1,0 +1,91 @@
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.crateTournament {
+  background-color: #26272c;
+  margin: auto;
+  width: 700px;
+  height: 1000px;
+  margin-top: 34px;
+  color: #c2c2c4;
+  input {
+      background-color: #484950;
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  textarea{
+    background-color: #484950;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+}
+.tournamentHeader{
+  margin-top: 20px;
+h1{
+  text-align: center;
+  font-size: 30px;
+}
+}
+.tournamentName{
+
+  margin-left: 150px;
+  margin-top: 30px;
+  input{
+    margin: auto;
+  }
+
+}
+h2{
+  text-align: center;
+  margin-top: 20px;
+}
+.selectGame{
+  background-color: #26272c;
+  select{
+    background-color: #484950;
+    margin-top: 30px;
+    margin-left: 150px;
+    width: 400px;
+  }
+}
+.selectDate{
+  margin-left: 150px;
+  margin-top: 20px;
+  input{
+    margin: auto;
+  }
+}
+.selectSize{
+  select{
+    background-color: #484950;
+    width: 400px;
+    margin-left: 150px;
+    margin-top: 30px;
+  }
+}
+.inputPrize{
+  margin-left: 150px;
+  margin-top: 30px;
+  input{
+    margin: auto;
+  }
+}
+.inputLogo{
+  margin-left: 150px;
+  margin-top: 30px;
+  input{
+    margin: auto;
+  }
+}
+
+.createTournamentButton{
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+}

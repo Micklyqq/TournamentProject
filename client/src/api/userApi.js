@@ -24,8 +24,7 @@ export const check = async ()=>{
     }
 }
 
-export const getData = async ()=>{
-    try{
-        const {data} = await $authHost
-    }
+export const getData = async (id)=>{
+    const {data} = await $host.post('api/user/profile/info',{id});
+    return data;
 }
