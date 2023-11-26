@@ -1,12 +1,13 @@
 import create from "zustand";
 
+
 export const TournamentStore = create(set=>({
     _tournaments:[{}],
-    _user:{},
-    setIsAuth:(bool)=>set(state=>{
-        return{_isAuth:bool};
+    _games:[{}],
+    setTournament:(tournament)=>set(state=>{
+        return{_tournaments:tournament};
     }),
-    setUser:(user)=>set(state=>{
-        return {_user:user} ;
+    setGame:(game)=>set(state=>{
+        return {_games:game} ;
     }),
 }));
