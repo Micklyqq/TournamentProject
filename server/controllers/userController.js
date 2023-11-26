@@ -1,14 +1,14 @@
 const ApiError = require("../error/ApiError")
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {User,UserRole,Role } = require("../models/model");
+const {User,UserRole,Role,Team,Tournament } = require("../models/model");
 const uuid = require('uuid');
 const path = require("path");
 const fs = require('fs');
 
 
-const generateJwt = (id,email,roleId)=>{
-    return jwt.sign({id,email,roleId},process.env.SECRET_KEY,{
+const generateJwt = (id,email,roleId,teamOwner,tournamentOwner)=>{
+    return jwt.sign({id,email,roleId,teamOwner,tournamentOwner},process.env.SECRET_KEY,{
         expiresIn:"24h",
     })
 }
@@ -21,6 +21,10 @@ const findAllRoles = (roles)=>{
    }
 
 }
+
+
+
+
 
 class UserController{
     async registration(req,res,next) {
@@ -55,13 +59,15 @@ class UserController{
 
     const userRole = await UserRole.findAll({where:{userId:user.id}});
     const roles = findAllRoles(userRole);
-    const token = generateJwt(user.id,user.email,roles);
+    const teamOwner = await Team.findOne({where:{userId:user.id}});
+    const tournamentOwner = await Tournament.findOne({where:{userId:user.id}})
+    const token = generateJwt(user.id,user.email,roles,(teamOwner?teamOwner.id:null),(tournamentOwner?tournamentOwner.id:null));
     return res.json({token});
     }
 
     async check(req,res,next){
 
-    const token = generateJwt(req.user.id,req.user.email,req.user.roleId);
+    const token = generateJwt(req.user.id,req.user.email,req.user.roleId,req.user.teamOwner,req.user.tournamentOwner);
     return res.json({token});
     }
 

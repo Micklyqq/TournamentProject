@@ -7,11 +7,11 @@ class TeamController{
     async create(req,res,next){
 
            try {
-               const {name,description} = req.body;
+               const {name,description,userId} = req.body;
                const {logo} = req.files
                let fileName = uuid.v4()+".jpg";
 
-               const team = await Team.create({name,logo:fileName,description});
+               const team = await Team.create({name,logo:fileName,description,userId});
                logo.mv(path.resolve(__dirname,'..','static',fileName));
                return res.json(team);
            }
@@ -36,6 +36,7 @@ class TeamController{
     return res.json(team);
 
     }
+
 
     async delete(req,res){
         const {id} = req.params;
