@@ -1,25 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "../css/commands_in.css";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import commandImage from "../img/TS.png";
 import playerIcon from "../img/player.png";
 import international from "../img/int.png";
+import {CommandStore} from "../store/CommandStore";
+import {getOneTeam} from "../api/commandApi";
 function CommandIn() {
-  const commands = useSelector((state) => state.commands || []);
+
+  const command = CommandStore(state=>state._commands);
+  const setCommand = CommandStore(state=>state.setCommand)
   const { id } = useParams();
-  let currentCommand;
-  if (commands && commands.length > 0) {
-    currentCommand = commands.find((item) => item.id == id);
-  }
+  useEffect(() => {
+    getOneTeam(id).then((data)=>setCommand(data));
+  }, []);
   return (
     <main>
       <section className="commands_info">
         <h1>
-          Команда {currentCommand?.commandName} по {currentCommand?.commandGame}
+          Команда {command?.name}
         </h1>
         <div className="main_info">
-          <img src={commandImage} alt="" />
+          <img src={process.env.REACT_APP_API_URL+command.logo} alt="" />
           <div className="command_about">
             <div className="command_about_first">
               <p>Страна:</p>
@@ -29,7 +31,7 @@ function CommandIn() {
               <p>Первые места:</p>
             </div>
             <div className="command_about_second">
-              <p>{currentCommand?.commandCountry}</p>
+              <p>Москва</p>
               <p>9300</p>
               <p>$ 24 965 688</p>
               <p>106</p>
@@ -39,7 +41,7 @@ function CommandIn() {
         </div>
         <div className="info_big">
           <p>
-            {currentCommand?.commandName} — европейская киберспортивная
+             — европейская киберспортивная
             организация. Первый американский собрался в декабре 2012, в него
             вошли TC, BuLba, FLUFFNSTUFF, ixmike88 и Korok. Та команда получила
             прямое приглашение на The International 2013 и смогла занять 7-8
@@ -47,7 +49,7 @@ function CommandIn() {
           </p>
 
           <p>
-            {currentCommand?.commandName} неплохо выступала в американском
+             неплохо выступала в американском
             регионе, однако на крупных турнирах не побеждали. Поэтому перед The
             International 2014 в команде произошли замены: остались лишь TC и
             BuLba, а новыми игроками стали qojqva, DeMoN и Waytosexy. В этот раз
@@ -56,7 +58,7 @@ function CommandIn() {
           </p>
 
           <p>
-            Осенью 2015 {currentCommand?.commandName} представляет новый состав
+            Осенью 2015  представляет новый состав
             команды, который будет выступать в Европе. Подписание бесхозных
             5Jungz определенно стало лучшим решением организации. Опыт FATA- и
             KuroKy и таланты JerAx, MATUMBAMAN и MinD_ContRoL сразу привлекли
@@ -64,7 +66,7 @@ function CommandIn() {
             Frankfurt Major, в команде был виден потенциал, который окончательно
             раскрылся весной 2016: победа на EPICENTER, вторые места на
             Major-турнирах от Valve в Шанхае и Маниле. К The International 2016{" "}
-            {currentCommand?.commandName} подходила в качестве одной из
+             подходила в качестве одной из
             фавориток, однако заняла лишь 7-8 место.
           </p>
 
@@ -80,7 +82,7 @@ function CommandIn() {
           <p>
             Дальнейшая судьба той команды складывалась не так ярко: в 2018 она
             выиграла лишь один турнир, а на The International 2018 взяла
-            четвертое место. В 2019 {currentCommand?.commandName} побеждает на
+            четвертое место. В 2019  побеждает на
             MDL Macau 2019, берет серебро MDL Disneyland® Paris Major. Тем не
             менее, перед EPICENTER XL впервые за долгое время в команде
             происходят изменения: MATUMBAMAN уходит из состава, а на его место
@@ -118,7 +120,7 @@ function CommandIn() {
             </p>
           </div>
         </div>
-        <h2>Состав {currentCommand?.commandName}</h2>
+        <h2>Состав </h2>
         <table className="team_composition">
           <tbody>
             <tr>
@@ -213,56 +215,56 @@ function CommandIn() {
             </tr>
           </tbody>
         </table>
-        <h2>Игры {currentCommand?.commandName}</h2>
+        <h2>Игры </h2>
         <div className="match_time">
           <div className="game_future">
             <h3>Будущие игры</h3>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>13:00</p>
                   <p className="time">20.10</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>13:00</p>
                   <p className="time">20.10</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>13:00</p>
                   <p className="time">20.10</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>13:00</p>
                   <p className="time">20.10</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="show_more">
@@ -273,46 +275,46 @@ function CommandIn() {
             <h3>Прошедшие игры</h3>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>0:2</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>0:2</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>0:2</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="matchtime_element">
               <div className="matchtime_element_info">
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
                 <img src={commandImage} alt="" />
                 <div className="mathctime_time">
                   <p>0:2</p>
                 </div>
                 <img src={commandImage} alt="" />
-                <p>{currentCommand?.commandName}</p>
+                <p></p>
               </div>
             </div>
             <div className="show_more">

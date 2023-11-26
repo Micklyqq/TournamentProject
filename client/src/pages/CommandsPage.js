@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, {useEffect} from "react";
 import "../css/commands.css";
-import Profile from "../components/Profile";
-import Modal from "../components/Modal";
-import { useSelector } from "react-redux";
 import CommandsList from "../components/CommandsList";
-import CreateNewCommand from "../components/CreateNewCommand";
+import Authorization from "../components/Authorization";
+import {Link} from "react-router-dom";
+import {COMMAND_CREATE} from "../utils/consts";
+import {CommandStore} from "../store/CommandStore";
+import {getTeams} from "../api/commandApi";
 
 function CommandsPage() {
-  const [modalActive, setModalActive] = useState(false);
-  const commands = useSelector((state) => state.commands);
+  const commands = CommandStore(state => state._commands);
+  const setCommand = CommandStore(state=>state.setCommand);
+
+
+  useEffect(() => {
+    getTeams().then((data)=>setCommand(data));
+
+  }, []);
+
+
   return (
     <>
       <main>
@@ -27,12 +36,13 @@ function CommandsPage() {
             <button type="submit" className="button_search">
               Поиск
             </button>
+            <Link to={COMMAND_CREATE}>
             <div
               className="create_command"
-              onClick={() => setModalActive(true)}
             >
               Создать команду
             </div>
+            </Link>
           </form>
           <div className="commands_list">
             {commands && commands.length > 0 && (
@@ -40,11 +50,8 @@ function CommandsPage() {
             )}
           </div>
         </section>
-        <Profile />
+        <Authorization />
       </main>
-      <Modal active={modalActive} setActive={setModalActive}>
-        <CreateNewCommand />
-      </Modal>
     </>
   );
 }

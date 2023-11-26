@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {Navigate} from "react-router-dom";
-import {COMMAND_ROUTE, TOURNAMENT_ROUTE} from "../utils/consts";
-import {v4 as uuidv4} from "uuid";
+import {COMMAND_ROUTE} from "../utils/consts";
 import {createTeam} from "../api/commandApi";
 
 
