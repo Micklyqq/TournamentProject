@@ -1,7 +1,6 @@
 import {UserStore} from "../store/UserStore";
 import {Routes,Navigate, Route} from "react-router-dom";
 import {authRoutes,publicRoutes} from "../routes";
-import store from "../store_redux/store";
 import {MAIN_ROUTE} from "../utils/consts";
 
 export const AppRouter = () => {
