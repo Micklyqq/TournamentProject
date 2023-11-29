@@ -1,23 +1,36 @@
 import React, {useState} from "react";
-import {Navigate} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import {COMMAND_ROUTE} from "../utils/consts";
-import {createTeam} from "../api/commandApi";
+import {createTeam, getTeams} from "../api/commandApi";
+import {UserStore} from "../store/UserStore";
+import {forEach} from "react-bootstrap/ElementChildren";
+import {CommandStore} from "../store/CommandStore";
 
 
 export const CreateCommand=()=>{
-
+    const user= UserStore(state=>state._user)
     const[name,setName] = useState('');
     const[description,setDescription] = useState('');
     const[file,setFile] = useState(null);
+    const commands = CommandStore(state => state._commands);
 
 
     const addTeam=()=>{
-        const formData = new FormData();
-        formData.append("name",name);
-        formData.append("description",description);
-        formData.append("logo",file);
-        createTeam(formData).then((data)=><Navigate to={COMMAND_ROUTE+data.id}/>)
-    }
+
+
+          if(user.teamOwner===null){
+              const formData = new FormData();
+              formData.append("name",name);
+              formData.append("description",description);
+              formData.append("logo",file);
+              formData.append("userId",user.id);
+              createTeam(formData).then((data)=><Link to={COMMAND_ROUTE+data.id}/>)
+          }
+          else{
+              alert("Вы не можете создать больше 1 команды!")
+          }
+      }
+
 
     return(
         <main>
