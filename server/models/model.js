@@ -56,6 +56,11 @@ const TournamentTeam = sequelize.define('tournament_team',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
 })
 
+const TeamNotification = sequelize.define('team_notification',{
+    id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
+    status:{type:DataTypes.STRING,defaultValue:"In progress"}
+})
+
 
 
 Team.hasMany(User);
@@ -79,7 +84,13 @@ Team.belongsTo(User);
 User.hasOne(Tournament);
 Tournament.belongsTo(User);
 
+User.hasMany(TeamNotification);
+TeamNotification.belongsTo(User);
+
+Team.hasMany(TeamNotification);
+TeamNotification.belongsTo(User);
+
 module.exports={
-    User,Team,UserRole,Tournament,Role,Game,Match
+    User,Team,UserRole,Tournament,Role,Game,Match,TeamNotification
 }
 

@@ -2,9 +2,14 @@ import React from "react";
 import "../css/commands.css";
 import { Link } from "react-router-dom";
 import {COMMAND_ROUTE} from "../utils/consts";
+import {UserStore} from "../store/UserStore";
 
 
 function CommandBlock({ command }) {
+
+
+
+
   const { id, name,logo } = command;
   return (
     <div className="command_block">
@@ -16,7 +21,7 @@ function CommandBlock({ command }) {
         <p>Количество игроков: 0 из 10</p>
 
         <div>
-          <div className="button_command_info">
+          <div className="button_command_info" >
               <p>Подать заявку на вступление</p>
           </div>
           <div className="button_command_info">

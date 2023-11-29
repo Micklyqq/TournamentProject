@@ -1,19 +1,41 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "../css/commands_in.css";
 import { useParams } from "react-router-dom";
 import commandImage from "../img/TS.png";
-import playerIcon from "../img/player.png";
 import international from "../img/int.png";
-import {CommandStore} from "../store/CommandStore";
-import {getOneTeam} from "../api/commandApi";
+import {findAllTeammates, getOneTeam} from "../api/commandApi";
+import {UserStore} from "../store/UserStore";
+import {createTeamNotification, getOneTeamNotification} from "../api/notificationApi";
+import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png"
 function CommandIn() {
-
-  const command = CommandStore(state=>state._commands);
-  const setCommand = CommandStore(state=>state.setCommand)
+ const [command,setCommand] = useState({});
+ const [teammates,setTeammates] = useState({})
+  const user = UserStore(state=>state._user);
   const { id } = useParams();
   useEffect(() => {
     getOneTeam(id).then((data)=>setCommand(data));
+    findAllTeammates(id).then((data)=>setTeammates(data))
+
   }, []);
+
+  const Click = async ()=>{
+    try {
+      if(teammates&&teammates.length<5&&user.teamId===null){
+        const notificationData = await getOneTeamNotification(command.id, user.id);
+        if (notificationData === null) {
+          await createTeamNotification(user.id, command.id);
+          alert("Заявка была подана!");
+        } else {
+          alert("Вы уже подали заявку!");
+        }
+      }
+      else{alert("Команда уже набрала достаточное количество игроков!")}
+    } catch (error) {
+
+      console.error(error);
+    }
+
+  }
   return (
     <main>
       <section className="commands_info">
@@ -22,46 +44,13 @@ function CommandIn() {
         </h1>
         <div className="main_info">
           <img src={process.env.REACT_APP_API_URL+command.logo} alt="" />
-          <div className="command_about">
-            <div className="command_about_first">
-              <p>Страна:</p>
-              <p>Рейтинг:</p>
-              <p>Заработано:</p>
-              <p>Туринры:</p>
-              <p>Первые места:</p>
-            </div>
-            <div className="command_about_second">
-              <p>Москва</p>
-              <p>9300</p>
-              <p>$ 24 965 688</p>
-              <p>106</p>
-              <p>16</p>
-            </div>
-          </div>
         </div>
         <div className="info_big">
+          {(teammates&&teammates.length<5&&user.teamId===null)?
+              (<div className="applyToJoinButton" onClick={Click}>Подать заявку на вступление</div>)
+              :(<div className="commandIsFull">Вы не можете подать заявку</div>)}
+        </div>
 
-        </div>
-        <h2>Статистика команды</h2>
-        <div className="command_stat">
-          <div className="command_stat_element">
-            <p>Победы %</p>
-            <p>55%</p>
-          </div>
-          <div className="command_stat_element">
-            <p>Всего сыграно</p>
-            <p>
-              <span className="win">329 </span>/ 66 /{" "}
-              <span className="lose">196</span>
-            </p>
-          </div>
-          <div className="command_stat_element">
-            <p>Текущий стрик:</p>
-            <p>
-              <span className="lose">1 поражение</span>
-            </p>
-          </div>
-        </div>
         <h2>Состав </h2>
         <table className="team_composition">
           <tbody>
@@ -71,90 +60,22 @@ function CommandIn() {
               <td>Возраст</td>
               <td>Принят</td>
             </tr>
-            <tr>
-              <td>
-                <div>
-                  <img src={playerIcon} alt="" />
-                  <div>
-                    <p>Zai</p>
-                    <p>Людвиг Уолберг</p>
-                  </div>
-                </div>
-              </td>
-              <td>Оффлейнер</td>
-              <td>25</td>
-              <td>03.11.2021</td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                  <img src={playerIcon} alt="" />
-                  <div>
-                    <p>Zai</p>
-                    <p>Людвиг Уолберг</p>
-                  </div>
-                </div>
-              </td>
-              <td>Оффлейнер</td>
-              <td>25</td>
-              <td>03.11.2021</td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                  <img src={playerIcon} alt="" />
-                  <div>
-                    <p>Zai</p>
-                    <p>Людвиг Уолберг</p>
-                  </div>
-                </div>
-              </td>
-              <td>Оффлейнер</td>
-              <td>25</td>
-              <td>03.11.2021</td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                  <img src={playerIcon} alt="" />
-                  <div>
-                    <p>Zai</p>
-                    <p>Людвиг Уолберг</p>
-                  </div>
-                </div>
-              </td>
-              <td>Оффлейнер</td>
-              <td>25</td>
-              <td>03.11.2021</td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                  <img src={playerIcon} alt="" />
-                  <div>
-                    <p>Zai</p>
-                    <p>Людвиг Уолберг</p>
-                  </div>
-                </div>
-              </td>
-              <td>Оффлейнер</td>
-              <td>25</td>
-              <td>03.11.2021</td>
-            </tr>
-            <tr>
-              <td>
-                <div>
-                  <img src={playerIcon} alt="" />
-                  <div>
-                    <p>Zai</p>
-                    <p>Людвиг Уолберг</p>
-                  </div>
-                </div>
-              </td>
-              <td>Оффлейнер</td>
-              <td>25</td>
-              <td>03.11.2021</td>
-            </tr>
+            {teammates && teammates.length > 0 && teammates.map((item) => (
+                <tr key={item.id}> {/* Добавлен key для каждого элемента в массиве */}
+                  <td>
+                    <div>
+                      <img src={item.logo ? process.env.REACT_APP_API_URL + item.logo : defaultLogo} alt="" />
+                      <div>
+                        <p>{item.userName ? item.userName : "defaultName"}</p> {/* Использование item.userName вместо teammates.userName */}
+                      </div>
+                    </div>
+                  </td>
+                  <td>Оффлейнер</td>
+                  <td>25</td>
+                  <td>03.11.2021</td>
+                </tr>
+            ))}
+
           </tbody>
         </table>
         <h2>Игры </h2>

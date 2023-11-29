@@ -541,4 +541,31 @@ main {
   height: 50px;
 }
 
+.applyToJoinButton {
+  border: 1px solid gray;
+  height: 50px;
+  width: 25%;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.applyToJoinButton:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.applyToJoinButton:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+.commandIsFull {
+  border: 1px solid gray;
+  height: 50px;
+  width: 25%;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
 /*# sourceMappingURL=commands_in.css.map */

@@ -6,6 +6,7 @@ const teamRouter = require('./teamRouter');
 const tournamentRouter = require('./tournamentRouter');
 const gameRouter = require('./gameRouter');
 const roleRouter = require('./roleRouter');
+const notificationRouter = require('./notificationRouter')
 
 
 
@@ -16,4 +17,5 @@ router.use('/tournament',tournamentRouter);
 router.use('/game',gameRouter);
 router.use('/match',matchRouter);
 router.use('/role',roleRouter);
+router.use('/notification',notificationRouter);
 module.exports = router;
