@@ -7,12 +7,15 @@ import {
     COMMAND_ROUTE,
     CREATE_TOURNAMENT,
     COMMAND_CREATE,
-    TOURNAMENT_ROUTE, MAIN_ROUTE,
+    TOURNAMENT_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, MANAGE_COMMAND_ROUTE, MANAGE_TOURNAMENT_ROUTE,
 
 } from "./utils/consts";
 import CommandsPage from "./pages/CommandsPage";
 import {CreateCommand} from "./pages/CreateCommand";
 import {CreateTournament} from "./pages/CreateTournament";
+import ProfilePage from "./pages/ProfilePage";
+import CommandManagementPage from "./pages/CommandManagementPage";
+import TournamentManagementPage from "./pages/TournamentManagementPage";
 
 
 export const authRoutes = [
@@ -23,6 +26,18 @@ export const authRoutes = [
     {
         path: CREATE_TOURNAMENT,
         Component:CreateTournament,
+    },
+    {
+        path: PROFILE_ROUTE,
+        Component:ProfilePage
+    },
+    {
+        path: MANAGE_COMMAND_ROUTE,
+        Component:CommandManagementPage
+    },
+    {
+        path: MANAGE_TOURNAMENT_ROUTE,
+        Component:TournamentManagementPage
     },
 ];
 

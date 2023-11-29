@@ -1,0 +1,62 @@
+.infoBlock {
+  border: 1px solid gray;
+  flex-grow: 25;
+  font-size: 30px;
+}
+.infoBlock p {
+  margin-top: 15px;
+}
+
+.avatarProfile {
+  display: flex;
+  flex-direction: row;
+  max-width: 20%;
+}
+
+.avatar {
+  max-width: 50%;
+}
+
+.changeIcon {
+  display: inline-block;
+  cursor: pointer;
+}
+.changeIcon #logo_input {
+  display: none;
+}
+.changeIcon #name_input {
+  width: 260px;
+  height: 38.64px;
+  background-color: #2b2c31;
+  border: 1px solid #3b3c40;
+  color: #616165;
+}
+.changeIcon #name_input:hover {
+  background-color: #3c3d41;
+  border: 1px solid #878787;
+  color: #ffffff;
+}
+.changeIcon #name_input:focus {
+  background-color: #3c3d41;
+  border: 1px solid #bcbcbc;
+  color: #ffffff;
+}
+
+.submitButton {
+  border: 1px solid gray;
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.submitButton:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.submitButton:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+/*# sourceMappingURL=profileManagement.css.map */

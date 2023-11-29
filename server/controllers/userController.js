@@ -7,10 +7,29 @@ const path = require("path");
 const fs = require('fs');
 
 
-const generateJwt = (id,email,roleId,teamOwner,tournamentOwner)=>{
-    return jwt.sign({id,email,roleId,teamOwner,tournamentOwner},process.env.SECRET_KEY,{
-        expiresIn:"24h",
-    })
+const generateJwt = (id,email,roleId,teamOwner,tournamentOwner,logo,userName,teamId)=>{
+    try {
+        const payload = {
+            id,
+            email,
+            roleId,
+            teamOwner,
+            tournamentOwner,
+            logo,
+            userName,
+            teamId,
+        };
+
+        const token = jwt.sign(payload, process.env.SECRET_KEY, {
+            expiresIn: "24h",
+        });
+
+
+        return token;
+    } catch (error) {
+        console.error("Error generating token:", error);
+        throw error;
+    }
 }
 
 const findAllRoles = (roles)=>{
@@ -21,10 +40,6 @@ const findAllRoles = (roles)=>{
    }
 
 }
-
-
-
-
 
 class UserController{
     async registration(req,res,next) {
@@ -41,7 +56,7 @@ class UserController{
         const hashPassword = await bcrypt.hash(password,5);
         const user = await User.create({email,password:hashPassword});
         const createDefaultRole = await UserRole.create({userId:user.id,roleId:defaultRole.id});
-        const token = generateJwt(user.id,user.email,createDefaultRole.roleId);
+        const token = generateJwt(user.id,user.email,createDefaultRole.roleId,null,null,null,null);
         return res.json({token});
 
     }
@@ -61,14 +76,21 @@ class UserController{
     const roles = findAllRoles(userRole);
     const teamOwner = await Team.findOne({where:{userId:user.id}});
     const tournamentOwner = await Tournament.findOne({where:{userId:user.id}})
-    const token = generateJwt(user.id,user.email,roles,(teamOwner?teamOwner.id:null),(tournamentOwner?tournamentOwner.id:null));
+    const token = generateJwt(user.id,user.email,roles,(teamOwner?teamOwner.id:null),(tournamentOwner?tournamentOwner.id:null),user.logo,user.userName,user.teamId);
     return res.json({token});
     }
 
     async check(req,res,next){
+        try{
+            const teamOwner = await Team.findOne({where:{userId:req.user.id}})
+            const tournamentOwner = await Tournament.findOne({where:{userId:req.user.id}})
+            const token = generateJwt(req.user.id,req.user.email,req.user.roleId,(teamOwner?teamOwner.id:null),(tournamentOwner?tournamentOwner.id:null),req.user.logo,req.user.userName,req.user.teamId);
+            return res.json({token});
+        }
+        catch (e){
+            res.json({message:e})
+        }
 
-    const token = generateJwt(req.user.id,req.user.email,req.user.roleId,req.user.teamOwner,req.user.tournamentOwner);
-    return res.json({token});
     }
 
     async delete(req,res,next){
@@ -79,37 +101,70 @@ class UserController{
         return res.json(userDestroy);
     }
 
-    async profileGet(req,res,next){
-        const {id} = req.body;
-        const {userName,logo} = await User.findOne({where: {id}});
+    async getUserInfo(req,res,next){
+        const {id} = req.params;
+        const user = await User.findOne({where: {id}});
 
-        return res.json({userName,logo});
+        return res.json(user);
     }
 
-    async profilePost(req,res,next){
+    async userUpdate(req,res,next){
 
-          const {id,userName} = req.body;
-        const {logo} = req.files
-        let fileName = uuid.v4()+".jpg";
-          let user;
-          user = await User.findOne({where:{id}});
-          const oldLogo = path.join(__dirname,'..','static',user.logo);
+       try {
+           let {id,userName} = req.body;
+           let logo;
+           let fileName = uuid.v4()+".jpg";
+           let user;
+           user = await User.findOne({where:{id}});
 
-        fs.unlinkSync (oldLogo)
-          if(userName && !logo){
-              user = await User.update({userName},{where: {id}});
+           /*const oldLogo = path.join(__dirname,'..','static',user.logo);
+           try {
+               fs.accessSync(oldLogo);
+               fs.unlinkSync(oldLogo);
+           } catch (error) {
+               console.log('Error deleting file:', error);
+           }*/
 
-          }
-          else if(!userName && logo){
-              user = await User.update({logo:fileName},{where: {id}});
+           if(req.files===null){
+               logo=null;
+           }
+           else{
+               logo = req.files.logo;
+           }
 
-          }
-          else if(userName && logo){
-              user = await User.update({userName,logo:fileName},{where: {id}});
+           if(userName==="null" || userName===null){
+               userName=null;
+           }
+           if(userName && logo===null){
+               await User.update({userName},{where: {id}}).catch(error => console.error('Update error:', error));
 
-          }
-        logo.mv(path.resolve(__dirname,'..','static',fileName));
-        return res.json(user);
+           }
+           else if(userName===null && logo){
+               await User.update({logo:fileName},{where: {id}}).catch(error => console.error('Update error:', error));
+               await logo.mv(path.resolve(__dirname,'..','static',fileName));
+
+           }
+           else if(userName && logo){
+               await User.update({userName,logo:fileName},{where: {id}}).catch(error => console.error('Update error:', error));
+               await logo.mv(path.resolve(__dirname,'..','static',fileName));
+
+           }
+
+           user = await User.findOne({where:{id}});
+
+           const userRole = await UserRole.findAll({where:{userId:user.id}});
+           const roles = findAllRoles(userRole);
+           const teamOwner = await Team.findOne({where:{userId:user.id}});
+           const tournamentOwner = await Tournament.findOne({where:{userId:user.id}})
+           const token = generateJwt(user.id,user.email,roles,(teamOwner?teamOwner.id:null),(tournamentOwner?tournamentOwner.id:null),user.logo,user.userName,user.teamId)
+
+
+
+           return res.json({token});
+       }
+       catch (e) {
+           res.json({message:e})
+       }
 
     }
 }
