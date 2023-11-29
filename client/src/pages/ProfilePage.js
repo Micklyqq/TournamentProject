@@ -1,14 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "../css/profilePage.css";
-import {UserStore} from "../store/UserStore";
-import changeIcon from "../static/change.svg"
-import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png";
-import {updateUser} from "../api/userApi";
-import {jwtDecode} from "jwt-decode";
 import ProfileManagement from "../components/ProfileManagement";
 import TeamManagement from "../components/TeamManagement";
-import {getOneTeam} from "../api/commandApi";
-import {getAllTeamNotification} from "../api/notificationApi";
 
 
 

@@ -1,0 +1,29 @@
+.profileMain{
+  display: flex;
+  flex-direction: row;
+  height: 1000px;
+  margin-top: 33px;
+  background-color: #2b2c31;
+  color: #c2c2c4;
+}
+.buttonsBlockProfile{
+  border: 1px solid gray;
+  flex-grow: 5;
+  div{
+    border: 1px solid gray;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    &:hover {
+      background-color: #d42c2f;
+      color: #ffffff;
+    }
+    &:active {
+      background-color: #d42c2f;
+      transform: translateY(2px);
+    }
+
+  }
+}
