@@ -3,11 +3,14 @@ import React, { useState} from "react";
 import {createTournament} from "../api/tournamentApi";
 import {TournamentStore} from "../store/TournamentStore";
 import {v4 as uuidv4} from "uuid";
-import { Navigate } from 'react-router-dom';
-import {TOURNAMENT_ROUTE} from "../utils/consts";
+import {Link, Navigate} from 'react-router-dom';
+import {COMMAND_ROUTE, TOURNAMENT_ROUTE} from "../utils/consts";
+import {createTeam} from "../api/commandApi";
+import {UserStore} from "../store/UserStore";
 
 
 export const CreateTournament=()=>{
+    const user = UserStore(state=>state._user);
     const games = TournamentStore(state=>state._games);
     const setGameData = TournamentStore(state=>state.setGame)
     const[name,setName] = useState('');
@@ -23,15 +26,22 @@ export const CreateTournament=()=>{
 
 
     const addTournament=()=>{
-        const formData = new FormData();
-        formData.append("name",name);
-        formData.append("description",description);
-        formData.append("date",date);
-        formData.append("logo",file);
-        formData.append("size",size);
-        formData.append("prize",prize);
-        formData.append("gameId",game);
-        createTournament(formData).then((data)=><Navigate to={TOURNAMENT_ROUTE+data.id}/>)
+        if(user.tournamentOwner===null){
+            const formData = new FormData();
+            formData.append("name",name);
+            formData.append("description",description);
+            formData.append("date",date);
+            formData.append("logo",file);
+            formData.append("size",size);
+            formData.append("prize",prize);
+            formData.append("gameId",game);
+            formData.append("userId",user.id);
+            createTournament(formData).then((data)=><Navigate to={TOURNAMENT_ROUTE+data.id}/>)
+        }
+        else{
+            alert("Вы не можете создать больше 1 турнира!")
+        }
+
     }
 
     return(

@@ -22,13 +22,13 @@ class TeamController{
 
     }
 
-    async getAll(req,res){
+    async getAllTeams(req,res){
         const teams = await Team.findAll();
         return res.json(teams);
 
     }
 
-    async getOne(req,res){
+    async getOneTeam(req,res){
     const {id} = req.params;
     const team = await Team.findOne({
         where:{id},

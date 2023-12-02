@@ -3,7 +3,7 @@ import {getData, updateUser} from "../api/userApi";
 import "../css/TeamNotificationComponent.css"
 import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png"
 import {joinTeam} from "../api/commandApi";
-import {deleteNotification} from "../api/notificationApi";
+import { deleteTeamNotification} from "../api/notificationApi";
 
 
 export const TeamNotificationComponent=({notification})=>{
@@ -11,12 +11,12 @@ export const TeamNotificationComponent=({notification})=>{
     const  Accept = async ()=>{
        const formData = new FormData();
 
-        await joinTeam(user.id,notification.teamId).then(()=>deleteNotification(notification.id));
+        await joinTeam(user.id,notification.teamId).then(()=>deleteTeamNotification(notification.id));
 
     }
 
     const  Decline = async ()=>{
-     await deleteNotification(notification.id)
+     await deleteTeamNotification(notification.id)
 
     }
 
@@ -32,9 +32,9 @@ export const TeamNotificationComponent=({notification})=>{
 
         fetchData();
 
-        // Cleanup function to cancel the request if the component is unmounted
+
         return () => {
-            // Add any necessary cleanup logic here
+
         };
     }, [notification.userId]);
 

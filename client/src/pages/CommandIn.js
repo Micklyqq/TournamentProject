@@ -8,9 +8,10 @@ import {UserStore} from "../store/UserStore";
 import {createTeamNotification, getOneTeamNotification} from "../api/notificationApi";
 import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png"
 function CommandIn() {
- const [command,setCommand] = useState({});
+
  const [teammates,setTeammates] = useState({})
   const user = UserStore(state=>state._user);
+ const [command,setCommand] = useState({});
   const { id } = useParams();
   useEffect(() => {
     getOneTeam(id).then((data)=>setCommand(data));
