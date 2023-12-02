@@ -1,0 +1,133 @@
+.infoBlock {
+  border: 1px solid gray;
+  flex-grow: 25;
+  font-size: 30px;
+}
+.infoBlock p {
+  margin-top: 15px;
+}
+
+.avatarTeam {
+  display: flex;
+  flex-direction: row;
+  max-width: 20%;
+}
+
+.avatar {
+  max-width: 50%;
+}
+
+.changeIcon {
+  display: inline-block;
+  cursor: pointer;
+}
+.changeIcon #logo_input {
+  display: none;
+}
+.changeIcon #name_input {
+  width: 260px;
+  height: 38.64px;
+  background-color: #2b2c31;
+  border: 1px solid #3b3c40;
+  color: #616165;
+}
+.changeIcon #name_input:hover {
+  background-color: #3c3d41;
+  border: 1px solid #878787;
+  color: #ffffff;
+}
+.changeIcon #name_input:focus {
+  background-color: #3c3d41;
+  border: 1px solid #bcbcbc;
+  color: #ffffff;
+}
+
+.submitButton {
+  border: 1px solid gray;
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  outline: none;
+  color: #ffffff;
+}
+.submitButton:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.submitButton:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+.team_composition_management {
+  border-collapse: collapse;
+  margin-top: 37px;
+}
+.team_composition_management tr {
+  background-color: #2b2c31;
+  font-size: 13px;
+  border-top: 2px solid #26272c;
+}
+.team_composition_management tr:nth-of-type(1) {
+  background-color: #26272c;
+  font-size: 11px;
+  color: #777779;
+}
+.team_composition_management td:nth-of-type(1) {
+  width: 291px;
+}
+.team_composition_management td:nth-of-type(2) {
+  width: 312px;
+}
+.team_composition_management td:nth-of-type(3) {
+  width: 80px;
+}
+.team_composition_management td:nth-of-type(4) {
+  width: 148px;
+}
+.team_composition_management td div {
+  display: flex;
+  flex-direction: row;
+}
+.team_composition_management td div div {
+  display: flex;
+  flex-direction: column;
+  line-height: 15px;
+  padding: 10px;
+}
+.team_composition_management td div div p:nth-last-of-type(1) {
+  color: #777779;
+}
+.team_composition_management img {
+  width: 50px;
+  height: 50px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.generateButton {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px solid gray;
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  outline: none;
+  color: #ffffff;
+}
+.generateButton:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.generateButton:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+/*# sourceMappingURL=tournamentManagement.css.map */

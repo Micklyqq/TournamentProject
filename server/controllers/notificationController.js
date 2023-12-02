@@ -1,5 +1,5 @@
 const ApiError = require("../error/ApiError")
-const {TeamNotification} = require("../models/model");
+const {TeamNotification, TournamentNotification} = require("../models/model");
 const uuid = require('uuid');
 const path = require("path");
 
@@ -17,7 +17,7 @@ class NotificationController {
       }
     }
 
-    async getOneNotification(req, res) {
+    async getOneTeamNotification(req, res) {
         try{
             const {teamId,userId} = req.query;
             console.log(userId+" "+teamId)
@@ -32,7 +32,7 @@ class NotificationController {
         }
     }
 
-    async getAllNotification(req, res) {
+    async getAllTeamNotification(req, res) {
         try{
             const {teamId} = req.params;
             const notification = await TeamNotification.findAll({
@@ -46,7 +46,7 @@ class NotificationController {
         }
     }
 
-    async deleteNotification(req, res) {
+    async deleteTeamNotification(req, res) {
         try{
             const {id} = req.params;
 
@@ -60,6 +60,62 @@ class NotificationController {
         }
     }
 
+
+    async createTournamentNotification(req, res) {
+        try{
+            const {tournamentId, teamId} = req.body;
+            const notification = await TournamentNotification.create({
+                tournamentId, teamId
+            })
+            return res.json(notification);
+        }
+        catch (e) {
+            return res.json({message:e})
+        }
+    }
+
+    async getOneTournamentNotification(req, res) {
+        try{
+            const {tournamentId,teamId} = req.query;
+            console.log(tournamentId+" "+teamId)
+            const notification = await TournamentNotification.findOne({
+                where:{tournamentId,teamId}
+            })
+            console.log({notification});
+            return res.json(notification);
+        }
+        catch (e) {
+            return res.json({message:e})
+        }
+    }
+
+    async getAllTournamentNotification(req, res) {
+        try{
+            const {tournamentId} = req.params;
+            const notification = await TournamentNotification.findAll({
+                where:{tournamentId}
+            })
+            console.log({notification});
+            return res.json(notification);
+        }
+        catch (e) {
+            return res.json({message:e})
+        }
+    }
+
+    async deleteTournamentNotification(req, res) {
+        try{
+            const {id} = req.params;
+
+            const notification = await TournamentNotification.destroy({
+                where:{id}
+            })
+            return res.json(notification);
+        }
+        catch (e) {
+            return res.json({message:e})
+        }
+    }
 
 
 }

@@ -16,8 +16,29 @@ export const getAllTeamNotification = async (teamId)=>{
     return data;
 }
 
-export const deleteNotification = async (id)=>{
+export const deleteTeamNotification = async (id)=>{
     const {data} = await $authHost.delete('api/notification/team/delete/'+id);
+    return data;
+}
+
+export const getOneTournamentNotification = async (tournamentId,teamId)=>{
+    const {data} = await $authHost.get('api/notification/tournament',{params:{
+            tournamentId, teamId
+        }})
+    return data;
+}
+
+export const createTournamentNotification = async (tournamentId,teamId)=>{
+    const {data} = await $authHost.post('api/notification/tournament',{tournamentId,teamId});
+}
+
+export const getAllTournamentNotification = async (tournamentId)=>{
+    const {data} = await $authHost.get('api/notification/tournament/all/'+tournamentId);
+    return data;
+}
+
+export const deleteTournamentNotification = async (id)=>{
+    const {data} = await $authHost.delete('api/notification/tournament/delete/'+id);
     return data;
 }
 

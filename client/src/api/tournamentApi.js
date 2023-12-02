@@ -20,3 +20,13 @@ export const getAllGames = async ()=>{
     return data;
 }
 
+export const findAllTournamentMembers = async (tournamentId)=>{
+    const {data} = await $host.get('api/tournament/members/'+tournamentId)
+    return data;
+}
+
+export const jointTournament = async (tournamentId,teamId)=>{
+    const {data} = await $authHost.post('api/tournament/join',{tournamentId,teamId})
+}
+
+

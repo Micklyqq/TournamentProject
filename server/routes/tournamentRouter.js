@@ -2,9 +2,12 @@ const Router = require('express');
 const router = new Router();
 const tournamentController = require('../controllers/tournamentController')
 const authMiddleware = require("../middleware/authMiddleware")
+const teamController = require("../controllers/teamController");
 
 router.post('/',tournamentController.create)
-router.get('/',tournamentController.getAll)
-router.get('/:id',tournamentController.getOne)
+router.get('/',tournamentController.getAllTournaments)
+router.get('/:id',tournamentController.getOneTournament)
 router.delete('/:id',tournamentController.delete)
+router.get('/members/:tournamentId',tournamentController.getAllTournamentMembers)
+router.post('/join',authMiddleware,tournamentController.joinTournament);
 module.exports = router;

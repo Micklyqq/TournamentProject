@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "../css/profilePage.css";
 import ProfileManagement from "../components/ProfileManagement";
 import TeamManagement from "../components/TeamManagement";
+import TournamentManagement from "../components/TournamentManagement";
 
 
 
@@ -28,6 +29,8 @@ function ProfilePage() {
                     switch (toggle) {
                         case 1:
                             return <ProfileManagement />;
+                        case 2:
+                            return <TournamentManagement/>
                         case 3:
                             return <TeamManagement />;
                         default:

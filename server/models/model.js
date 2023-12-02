@@ -41,24 +41,29 @@ const Game = sequelize.define('game',{
 })
 
 
-const Match = sequelize.define('match',{
-    id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
-    tournament_id:{type:DataTypes.INTEGER,allowNull:false},
-    time:{type:DataTypes.TIME},
-    date:{type:DataTypes.DATE},
-    result:{type:DataTypes.INTEGER},
-})
+const Match = sequelize.define('match', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    winnerTeamId: { type: DataTypes.INTEGER, allowNull: true },
+
+});
+
+const MatchTeam = sequelize.define('match_team', {
+});
 const UserRole = sequelize.define('user_role',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
 })
 
 const TournamentTeam = sequelize.define('tournament_team',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
+    status:{type:DataTypes.BOOLEAN,defaultValue:true}
 })
 
 const TeamNotification = sequelize.define('team_notification',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
-    status:{type:DataTypes.STRING,defaultValue:"In progress"}
+})
+
+const TournamentNotification = sequelize.define('tournament_notification',{
+    id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
 })
 
 
@@ -75,6 +80,12 @@ Team.belongsToMany(Tournament,{through:TournamentTeam});
 Tournament.hasMany(Match);
 Match.belongsTo(Tournament);
 
+Team.belongsToMany(Match, { through: MatchTeam, as: 'matches' });
+Match.belongsToMany(Team, { through: MatchTeam, as: 'teams' });
+
+Match.belongsTo(Team, { as: 'winnerTeam', foreignKey: 'winnerTeamId' });
+
+
 Game.hasMany(Tournament);
 Tournament.belongsTo(Game);
 
@@ -90,7 +101,13 @@ TeamNotification.belongsTo(User);
 Team.hasMany(TeamNotification);
 TeamNotification.belongsTo(User);
 
+Tournament.hasMany(TournamentNotification);
+TournamentNotification.belongsTo(Tournament);
+
+Team.hasMany(TournamentNotification);
+TournamentNotification.belongsTo(Team);
+
 module.exports={
-    User,Team,UserRole,Tournament,Role,Game,Match,TeamNotification
+    User,Team,UserRole,Tournament,Role,Game,Match,TeamNotification,TournamentNotification,TournamentTeam,MatchTeam
 }
 

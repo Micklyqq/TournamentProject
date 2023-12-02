@@ -55,268 +55,7 @@ main {
     font-size: 15px;
   }
 }
-.results {
-  h2 {
-    font-size: 30px;
-    margin-bottom: 24px;
-  }
-  margin-left: 43px;
-}
-.results_list {
-  display: flex;
-  flex-direction: column;
-}
-.result_element {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 15px;
-  padding-top: 13px;
-  p {
-    &:nth-of-type(1) {
-      margin-left: 27px;
-    }
-    &:nth-of-type(2) {
-      margin-right: 22px;
-    }
-  }
-  div {
-    width: 170px;
-    margin-left: 50px;
-    p {
-      margin-top: 6px;
-      padding-left: 20px;
-    }
-  }
-  img {
-    float: left;
-    width: 32px;
-    height: 32px;
-  }
-  width: 832px;
-  height: 58px;
-  background-color: #2b2c31;
-  margin-top: 2px;
-}
-.element_headers {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 832px;
-  p {
-    font-size: 13px;
-    color: #777779;
-    &:nth-of-type(1) {
-      margin-left: 13px;
-    }
-    &:nth-of-type(3) {
-      margin-right: 26px;
-    }
-  }
-}
-.tournament_format {
-  margin-left: 49px;
-  margin-top: 29px;
-  margin-right: 29px;
-  h2 {
-    font-size: 30px;
-    margin-bottom: 32px;
-  }
-  ul,
-  ul li {
-    list-style: disc;
-  }
-  ul > li {
-    margin-left: 20px;
-  }
-}
 
-.tournament_table {
-  display: flex;
-  flex-direction: row;
-  margin-top: 29px;
-  margin-left: 49px;
-}
-.tournament_table_1 {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  width: 405px;
-  height: 433px;
-}
-.tournament_table_1_info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #2b2c31;
-  height: 40px;
-  margin-bottom: 2px;
-  div {
-    width: 130px;
-    p {
-      margin-top: 6px;
-      padding-left: 30px;
-    }
-    margin-right: 140px;
-  }
-  img {
-    float: left;
-    width: 26px;
-    height: 26px;
-    margin-top: 4px;
-  }
-  p {
-    &:nth-of-type(1) {
-      margin-left: 10px;
-      margin-top: 8px;
-    }
-    &:nth-of-type(2) {
-      margin-top: 8px;
-    }
-    &:nth-of-type(3) {
-      margin-top: 8px;
-      margin-right: 20px;
-    }
-  }
-}
-.tournament_table_2 {
-  display: flex;
-  flex-direction: column;
-}
-.tournament_header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 405px;
-  p {
-    font-size: 13px;
-    color: #777779;
-    &:nth-of-type(1) {
-      width: 10%;
-
-      padding-left: 2.5%;
-    }
-    &:nth-of-type(2) {
-      width: 70%;
-
-      padding-left: 1%;
-    }
-    &:nth-of-type(3) {
-      width: 10%;
-      padding-left: 3.5%;
-    }
-    &:nth-of-type(4) {
-      width: 10%;
-      padding-left: 2.5%;
-    }
-  }
-}
-.tournament_h2 {
-  margin-top: 29px;
-  margin-left: 49px;
-  h2 {
-    font-size: 30px;
-  }
-}
-
-.tournament_table_2 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 432px;
-  height: 500px;
-  margin-left: 10px;
-  border: 1px solid black;
-  img {
-    width: 26px;
-    height: 26px;
-  }
-}
-.table_element_2 {
-  padding: 6px;
-  width: 38px;
-  height: 44px;
-  background-color: #2b2c31;
-  margin-left: 1px;
-  p {
-    padding-left: 1px;
-    padding-top: 3px;
-  }
-}
-.win_number {
-  color: #37ad6d;
-}
-.lose_number {
-  color: #c42b2e;
-}
-.match_time {
-  display: flex;
-  flex-direction: column;
-  margin-top: 29px;
-  margin-left: 49px;
-  margin-right: 29px;
-  width: 830px;
-  h2 {
-    font-size: 30px;
-  }
-  h3 {
-    font-size: 16px;
-    text-align: center;
-  }
-}
-.game_now {
-  margin-top: 20px;
-}
-.game_future {
-  margin-top: 20px;
-}
-.game_past {
-  margin-top: 20px;
-}
-.matchtime_element {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 62px;
-  background-color: #2b2c31;
-  margin-top: 2px;
-}
-.matchtime_element_info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 368px;
-  height: 33px;
-  font-size: 15px;
-  img {
-    width: 26px;
-    height: 26px;
-  }
-}
-.date_red {
-  color: #d42c2f;
-}
-.time {
-  color: #7a7a7c;
-  font-size: 11px;
-  margin-left: 5px;
-}
-.show_more {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 34px;
-  background-color: #2b2c31;
-  p {
-    color: #7a7a7c;
-    font-size: 11px;
-    margin-top: 2px;
-  }
-}
 .commandsListInTournament {
   h2 {
     font-size: 30px;
@@ -375,4 +114,71 @@ main {
     color: #ffffff;
     border: 1px solid #878787;
   }
+}
+
+.matchList{
+
+}
+
+.match{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+
+}
+
+
+.team{
+  background-color: #333438;
+  width: 70%;
+  height: 70px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.teamLogo{
+  img{
+    max-width: 100%;
+    max-height:50% ;
+    display: inline-block;
+  }
+}
+
+.teamInfo{
+  display: flex;
+  flex-direction: row;
+
+  width: 50%;
+}
+.teamName{
+  margin-right: 20px;
+}
+
+.versus{
+background-color: #454445;
+  width: 3%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.winButton{
+  background-color: #878787;
+  width: 20%;
+  height: 50%;
+  margin-top: 10px;
+  margin-left: 20%;
+cursor: pointer;
+  &:hover {
+    background-color: #2cd434;
+    color: #ffffff;
+  }
+  &:active {
+    background-color: #2cd434;
+    color: #ffffff;
+    border: 1px solid #878787;
+  }
+}
+
+.Winner{
+  background-color: #2cd434;
 }
