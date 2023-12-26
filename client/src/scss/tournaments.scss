@@ -94,24 +94,17 @@ main {
       margin-top: 25px;
     }
     .tournament_image {
-      width: 173px;
-      height: 123.56px;
+      width: 20%;
+      height: 90%;
+      margin-top: 10px;
       word-wrap: break-word;
       margin-left: 20px;
-      margin-top: 16px;
-      img {
-        display: block;
-        width: 150px;
-        overflow: hidden;
-        margin-bottom: 5px;
-      }
-      p {
-        color: #8f8f91;
-        font-size: 11px;
-        margin-top: 5px;
-        &:nth-of-type(1) {
-          margin-top: 8px;
-        }
+      img{
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        object-position: center;
+
       }
     }
 
@@ -128,27 +121,25 @@ main {
       }
       p {
         color: #c2c2c4;
+        margin-top: 10px;
         font-size: 13px;
-        line-height: 15px;
-        margin-top: 9px;
-        width: 357px;
       }
     }
     .tournament_go {
       word-wrap: break-word;
       margin-left: 27px;
       margin-top: 19px;
+      width: 30%;
       p {
         color: #c2c2c4;
         font-size: 14px;
         line-height: 20px;
       }
-      .apply_for,
       .go_to_tournament {
         display: inline-block;
         background-color: #333438;
         border-radius: 5px;
-        width: 136px;
+        width: 100%;
         height: 29px;
         font-size: 10px;
         color: #c2c2c4;

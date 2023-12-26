@@ -25,7 +25,7 @@ app.use(errorHandler);
 const start = async ()=>{
     try {
         await sequelize.authenticate();
-        await sequelize.sync(); // если надо добавить новые данные в модель то передай аргументом {alter:true}
+        await sequelize.sync( ); // если надо добавить новые данные в модель то передай аргументом {alter:true}
         app.listen(PORT,()=>console.log(`Server is starting on PORT:${PORT}`));
     }
     catch (e) {

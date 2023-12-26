@@ -44,10 +44,12 @@ const Game = sequelize.define('game',{
 const Match = sequelize.define('match', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     winnerTeamId: { type: DataTypes.INTEGER, allowNull: true },
-
+    grid:{type:DataTypes.STRING,allowNull:false},
+    round:{type:DataTypes.INTEGER,defaultValue:0}
 });
 
 const MatchTeam = sequelize.define('match_team', {
+
 });
 const UserRole = sequelize.define('user_role',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
@@ -76,6 +78,9 @@ Role.belongsToMany(User,{through:UserRole});
 
 Tournament.belongsToMany(Team,{through:TournamentTeam});
 Team.belongsToMany(Tournament,{through:TournamentTeam});
+
+Team.hasMany(Tournament);
+Tournament.belongsTo(Team);
 
 Tournament.hasMany(Match);
 Match.belongsTo(Tournament);
@@ -106,6 +111,9 @@ TournamentNotification.belongsTo(Tournament);
 
 Team.hasMany(TournamentNotification);
 TournamentNotification.belongsTo(Team);
+
+
+
 
 module.exports={
     User,Team,UserRole,Tournament,Role,Game,Match,TeamNotification,TournamentNotification,TournamentTeam,MatchTeam

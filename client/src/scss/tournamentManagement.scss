@@ -108,9 +108,9 @@
 }
 
 
-h2{
-  font-size: 20px;
-}
+
+
+
 
 .generateButton{
   margin-top: 50px;
@@ -131,4 +131,14 @@ h2{
     background-color: #d42c2f;
     transform: translateY(2px);
   }
+}
+
+.tournamentGrid{
+  h2{
+    font-size: 30px;
+  }
+h3{
+  font-size: 25px;
+  text-align: center;
+}
 }

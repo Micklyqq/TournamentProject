@@ -6,5 +6,6 @@ router.post('/',matchController.create)
 router.get('/:tournamentId',matchController.getAllMatchesForTournament)
 //router.get('/:id',matchController.getOne)
 router.put("/:matchId",matchController.updateResult)
+router.post("/nextRound/:tournamentId",matchController.checkAndHandleNextRound)
 
 module.exports = router;

@@ -44,7 +44,9 @@ function CommandIn() {
           Команда {command?.name}
         </h1>
         <div className="main_info">
-          <img src={process.env.REACT_APP_API_URL+command.logo} alt="" />
+          <div className="team_logo">
+            <img src={process.env.REACT_APP_API_URL+command.logo} alt="" />
+          </div>
         </div>
         <div className="info_big">
           {(teammates&&teammates.length<5&&user.teamId===null)?

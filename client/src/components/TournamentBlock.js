@@ -35,21 +35,15 @@ function TournamentBlock({ tournament }) {
     <div className="tournament_block">
       <div className="tournament_image">
         <img src={process.env.REACT_APP_API_URL+logo} alt="" />
-        <p>Дата начала: {date} </p>
-        <p>Призовой фонд: ${prize} </p>
       </div>
       <div className="tournament_text">
         <h2>{name}</h2>
-        <p>{description}</p>
+        <p>Дата начала: {date} </p>
+        <p>Призовой фонд: ${prize} </p>
       </div>
       <div className="tournament_go">
         <p>Игра: {gameName}</p>
         <p>Число команд: {size}</p>
-        <a href="#">
-          <button className="apply_for">
-            <p>Подать заявку на участие</p>
-          </button>
-        </a>
         <Link to={TOURNAMENT_ROUTE+`/${id}`}>
           <div className="go_to_tournament">
             <p>Перейти к турниру</p>

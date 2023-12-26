@@ -387,7 +387,15 @@ main {
 }
 .commands_menu .commands_list .command_block .command_image {
   margin-left: 21px;
-  margin-top: 16px;
+  margin-top: 5px;
+  width: 25%;
+  height: 90%;
+}
+.commands_menu .commands_list .command_block .command_image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .commands_menu .commands_list .command_block .command_image p {
   color: #d6d6d9;

@@ -19,6 +19,10 @@ function TournamentIn() {
   const [members,setMembers] = useState([]);
   const [matches,setMatches] = useState([]);
   const [winner,setWinner] = useState(false);
+  const [startBracket,setStartBracket] = useState([]);
+  const [winnerBracket,setWinnerBracket] = useState([]);
+  const [loserBracket,setLoserBracket] = useState([]);
+  const [final,setFinal] = useState([]);
   const {id} = useParams();
   useEffect(() => {
     getOneTournament(id).then((data) => setTournament(data));
@@ -30,8 +34,16 @@ function TournamentIn() {
 
   useEffect(() => {
     getAllMatchesForTournament(id).then((data)=>setMatches(data));
-  }, [winner]);
+  }, []);
 
+  useEffect(() => {
+    if(matches.length>0){
+      setStartBracket(matches.filter((match) =>match.grid === "startBracket" || match.grid==="startBracketEnd"));
+      setWinnerBracket(matches.filter((match) =>match.grid === "winnerBracket")) ;
+      setLoserBracket(matches.filter((match) =>match.grid === "loserBracket"))  ;
+      setFinal(matches.filter((match) =>match.grid === "final"))
+    }
+  }, [matches]);
 
 
   const Click = async () => {
@@ -56,7 +68,9 @@ function TournamentIn() {
           <section className="tournament_info">
             <h1 className="header1">{tournament?.name}</h1>
             <div className="image_info">
-              <img src={process.env.REACT_APP_API_URL + tournament.logo} alt=""/>
+              <div className="tournament_logo">
+                <img src={process.env.REACT_APP_API_URL + tournament.logo} alt=""/>
+              </div>
               <div className="image_info_text">
                 <div className="image_info_1">
                   <p>Дата начала:</p>
@@ -72,15 +86,20 @@ function TournamentIn() {
               {(members&&members.length<5)?
                   (<div className="applyToJoinButton" onClick={Click}>Подать заявку на вступление</div>)
                   :(<div className="commandIsFull">Вы не можете подать заявку</div>)}
-
+              <h2>Описание</h2>
               <p>{tournament?.description}</p>
             </div>
               <h2>Команды</h2>
+            {members.length===0&&(
+                <p className="blank_info">К турниру еще не присоединилась ни одна команда!</p>
+            )}
               <div className="command_list_body">
+
                 {members&&members.length>0&&members.map((member,index)=>(
                     <div className="command_list_element" key={index}>
+
+                      <div className="team_image"><img src={process.env.REACT_APP_API_URL+member.logo} alt=""/></div>
                       <h3>{member.name}</h3>
-                      <img src={process.env.REACT_APP_API_URL+member.logo} alt=""/>
                       <div className="command_button">
                         <a href="#">
                           <p>Перейти к команде</p>
@@ -90,8 +109,39 @@ function TournamentIn() {
                 ))}
               </div>
             <div className="matchList">
-              <h2>Матчи</h2>
-              <MatchComponent matches={matches} setWinner={setWinner} winner={winner} isOwner={false}/>
+              <div className="tournamentGrid">
+                <h2>Турнирная сетка:</h2>
+                {startBracket.length===0&&(
+                    <p className="blank_info">Турнирная сетка еще не сформированна!</p>
+                )}
+                {startBracket&&startBracket.length>0&&(
+
+                  <div className="startGrid">
+                    <h3>Начальная сетка:</h3>
+                  <MatchComponent matches={startBracket} setWinner={setWinner} winner={winner} isOwner={false}/>
+            </div>)
+                }
+                {winnerBracket&&winnerBracket.length>0&&(
+                    <div className="winnerGrid">
+                      <h3>Сетка винеров:</h3>
+                      <MatchComponent matches={winnerBracket} setWinner={setWinner} winner={winner} isOwner={false}/>
+                    </div>
+                )}
+                {loserBracket&&loserBracket.length>0&&(
+                    <div className="loserGrid">
+                      <h3>Сетка лузеров:</h3>
+                      <MatchComponent matches={loserBracket} setWinner={setWinner} winner={winner} isOwner={false}/>
+                    </div>
+                )}
+                {final&&final.length>0&&(
+                    <div className="finalGrid">
+                      <h3>Финал:</h3>
+                      <MatchComponent matches={final} setWinner={setWinner} winner={winner} isOwner={false}/>
+                    </div>
+                )}
+
+
+              </div>
             </div>
           </section>
           <Authorization/>

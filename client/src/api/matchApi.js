@@ -13,3 +13,7 @@ export const getAllMatchesForTournament = async (tournamentId)=>{
 export const matchResultUpdate = async (matchId,winnerTeamId)=>{
     const {data} = await $authHost.put('api/match/'+matchId,{winnerTeamId})
 }
+
+export const checkAndHandleNextRound = async (tournamentId) =>{
+    const {data} = await $host.post('api/match/nextRound/'+tournamentId)
+}

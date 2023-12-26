@@ -382,25 +382,17 @@ main {
   margin-top: 25px;
 }
 .tournaments .tournaments_list .tournament_image {
-  width: 173px;
-  height: 123.56px;
+  width: 20%;
+  height: 90%;
+  margin-top: 10px;
   word-wrap: break-word;
   margin-left: 20px;
-  margin-top: 16px;
 }
 .tournaments .tournaments_list .tournament_image img {
-  display: block;
-  width: 150px;
-  overflow: hidden;
-  margin-bottom: 5px;
-}
-.tournaments .tournaments_list .tournament_image p {
-  color: #8f8f91;
-  font-size: 11px;
-  margin-top: 5px;
-}
-.tournaments .tournaments_list .tournament_image p:nth-of-type(1) {
-  margin-top: 8px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .tournaments .tournaments_list .tournament_text {
   width: 387px;
@@ -416,44 +408,39 @@ main {
 }
 .tournaments .tournaments_list .tournament_text p {
   color: #c2c2c4;
+  margin-top: 10px;
   font-size: 13px;
-  line-height: 15px;
-  margin-top: 9px;
-  width: 357px;
 }
 .tournaments .tournaments_list .tournament_go {
   word-wrap: break-word;
   margin-left: 27px;
   margin-top: 19px;
+  width: 30%;
 }
 .tournaments .tournaments_list .tournament_go p {
   color: #c2c2c4;
   font-size: 14px;
   line-height: 20px;
 }
-.tournaments .tournaments_list .tournament_go .apply_for,
 .tournaments .tournaments_list .tournament_go .go_to_tournament {
   display: inline-block;
   background-color: #333438;
   border-radius: 5px;
-  width: 136px;
+  width: 100%;
   height: 29px;
   font-size: 10px;
   color: #c2c2c4;
   margin-top: 22px;
   text-align: center;
 }
-.tournaments .tournaments_list .tournament_go .apply_for p,
 .tournaments .tournaments_list .tournament_go .go_to_tournament p {
   margin-top: 5px;
   font-size: 10px;
 }
-.tournaments .tournaments_list .tournament_go .apply_for:hover,
 .tournaments .tournaments_list .tournament_go .go_to_tournament:hover {
   background-color: #d42c2f;
   color: #ffffff;
 }
-.tournaments .tournaments_list .tournament_go .apply_for:active,
 .tournaments .tournaments_list .tournament_go .go_to_tournament:active {
   background-color: #d42c2f;
   color: #ffffff;
