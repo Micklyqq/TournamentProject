@@ -488,4 +488,17 @@ main {
   display: inline-block;
 }
 
-/*# sourceMappingURL=mainpage.css.map */
+.AuthValidationError {
+  color: red;
+  font-size: 12px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.authError {
+  color: red;
+  font-size: 12px;
+  max-width: 300px;
+  margin-top: 20px;
+  text-align: center;
+}/*# sourceMappingURL=mainpage.css.map */
