@@ -3,9 +3,6 @@
   flex-grow: 25;
   font-size: 30px;
 }
-.infoBlock p {
-  margin-top: 15px;
-}
 
 .avatarProfile {
   display: flex;
@@ -57,6 +54,4 @@
 .submitButton:active {
   background-color: #d42c2f;
   transform: translateY(2px);
-}
-
-/*# sourceMappingURL=profileManagement.css.map */
+}/*# sourceMappingURL=profileManagement.css.map */

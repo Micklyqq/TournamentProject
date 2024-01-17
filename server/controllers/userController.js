@@ -40,10 +40,8 @@ const generateJwt = (
 };
 
 const findAllRoles = (roles) => {
-  return (payload = {
-    array: roles.map((arr) => {
-      return arr.roleId;
-    }),
+  return roles.map((arr) => {
+    return arr.roleId;
   });
 };
 
@@ -117,10 +115,15 @@ class UserController {
       const tournamentOwner = await Tournament.findOne({
         where: { userId: req.user.id },
       });
+      const userRole = await UserRole.findAll({
+        where: { userId: req.user.id },
+      });
+      const roles = findAllRoles(userRole);
+      console.log(roles);
       const token = generateJwt(
         req.user.id,
         req.user.email,
-        req.user.roleId,
+        roles,
         teamOwner ? teamOwner.id : null,
         tournamentOwner ? tournamentOwner.id : null,
         req.user.logo,
@@ -134,11 +137,15 @@ class UserController {
   }
 
   async delete(req, res, next) {
-    const { id } = req.params;
-    const userDestroy = User.destroy({
-      where: { id },
-    });
-    return res.json(userDestroy);
+    try {
+      const { id } = req.params;
+      User.destroy({
+        where: { id },
+      });
+      res.json({ message: "Пользователь был удалена" });
+    } catch (error) {
+      next(ApiError.badRequest(`Произошла непредвиденная ошибка: ${error}`));
+    }
   }
 
   async getUserInfo(req, res, next) {
@@ -212,6 +219,41 @@ class UserController {
       return res.json({ token });
     } catch (e) {
       res.json({ message: e });
+    }
+  }
+
+  async teamLeave(req, res) {
+    try {
+      const { userId, teamId } = req.body;
+      const user = await User.findByPk(userId);
+      console.log(user);
+      console.log("user teamid: ", user.teamId, " teamid: ", teamId);
+      if (user.teamId == teamId) {
+        console.log("Я ТУТА");
+        await User.update({ teamId: null }, { where: { id: userId } });
+        res.json({ message: "Пользователь покинул команду", userId: userId });
+      } else {
+        res.json({ message: "Пользователь не состоит в этой команде" });
+      }
+    } catch (error) {
+      res.json({ message: error });
+    }
+  }
+
+  async getAllUsers(req, res, next) {
+    try {
+      let { limit, page } = req.query;
+      page = page || 1;
+      limit = limit || 9;
+      let offset = page * limit - limit;
+      const users = await User.findAndCountAll({
+        limit,
+        offset,
+        include: { all: true },
+      });
+      return res.json(users);
+    } catch (error) {
+      next(ApiError.internal(`Возникла непредвиденная ошибка: ${error}`));
     }
   }
 }

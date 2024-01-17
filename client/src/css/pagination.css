@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  width: 911px;
+  margin-left: 300px;
+  margin-top: 20px;
+  height: auto;
+  background-color: #1a1b20;
+}
+
+.pageItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 40px;
+  background-color: #2b2c31;
+  border: 1px solid #585859;
+  cursor: pointer;
+}
+.pageItem:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.pageItem:active {
+  background-color: #d42c2f;
+  color: #ffffff;
+  border: 1px solid #878787;
+}
+
+.pageItem:first-child {
+  border-right: 1px solid #585859;
+}
+
+.active {
+  background-color: #d42c2f;
+  color: #ffffff;
+}/*# sourceMappingURL=pagination.css.map */

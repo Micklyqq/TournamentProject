@@ -1,26 +1,23 @@
-.infoBlock{
+.infoBlock {
   border: 1px solid gray;
   flex-grow: 25;
   font-size: 30px;
-  p{
-    margin-top: 15px;
-  }
 }
-.avatarProfile{
+.avatarProfile {
   display: flex;
   flex-direction: row;
   max-width: 20%;
 }
-.avatar{
+.avatar {
   max-width: 50%;
 }
-.changeIcon{
+.changeIcon {
   display: inline-block;
   cursor: pointer;
-  #logo_input{
+  #logo_input {
     display: none;
   }
-  #name_input{
+  #name_input {
     width: 260px;
     height: 38.64px;
     background-color: #2b2c31;
@@ -40,7 +37,7 @@
   }
 }
 
-.submitButton{
+.submitButton {
   border: 1px solid gray;
   height: 50px;
   text-align: center;

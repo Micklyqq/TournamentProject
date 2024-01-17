@@ -1,28 +1,49 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import "../css/tournaments.css";
 import TournamentsList from "../components/TournamentsList";
 import Authorization from "../components/Authorization";
-import {Link} from 'react-router-dom';
-import {CREATE_TOURNAMENT} from "../utils/consts";
-import {TournamentStore} from "../store/TournamentStore";
-import {getAllGames, getTournaments} from "../api/tournamentApi";
+import { Link } from "react-router-dom";
+import { CREATE_TOURNAMENT } from "../utils/consts";
+import { TournamentStore } from "../store/TournamentStore";
+import { getAllGames, getTournaments } from "../api/tournamentApi";
+import Pagination from "../components/Pagination";
+
 function TournamentPage() {
+  const [loading, setLoading] = useState(true);
+  const tournaments = TournamentStore((state) => state._tournaments);
+  const setTournaments = TournamentStore((state) => state.setTournament);
+  const setGame = TournamentStore((state) => state.setGame);
+  const page = TournamentStore((state) => state._page);
+  const setPage = TournamentStore((state) => state.setPage);
+  const totalCount = TournamentStore((state) => state._totalCount);
+  const setTotalCount = TournamentStore((state) => state.setTotalCount);
+  const limit = TournamentStore((state) => state._limit);
 
- const tournaments = TournamentStore(state => state._tournaments);
-const setTournaments = TournamentStore(state=>state.setTournament);
-    const setGame = TournamentStore(state=>state.setGame)
+  useEffect(() => {
+    getTournaments(1, 5)
+      .then((data) => {
+        setTournaments(data.rows);
+        setTotalCount(data.count);
+      })
+      .finally(() => setLoading(false));
+    getAllGames().then((data) => setGame(data));
+  }, []);
 
-    useEffect(() => {
-        getTournaments().then((data)=>setTournaments(data));
-        getAllGames().then((data)=>setGame(data));
+  useEffect(() => {
+    setLoading(true);
+    getTournaments(page, 5)
+      .then((data) => {
+        setTournaments(data.rows);
+        setTotalCount(data.count);
+      })
+      .finally(() => setLoading(false));
+  }, [page]);
 
-    }, []);
-
-
-
-
+  if (loading) {
+    return <div className="loading">Подождите,идёт загрузка...</div>;
+  }
   return (
-    <div>
+    <>
       <main>
         <section className="tournaments">
           <form
@@ -40,11 +61,7 @@ const setTournaments = TournamentStore(state=>state.setTournament);
               Поиск
             </button>
             <Link to={CREATE_TOURNAMENT}>
-            <div
-              className="create_tournament"
-            >
-              Создать турнир
-            </div>
+              <div className="create_tournament">Создать турнир</div>
             </Link>
           </form>
           <div className="tournaments_list">
@@ -55,8 +72,14 @@ const setTournaments = TournamentStore(state=>state.setTournament);
         </section>
         <Authorization />
       </main>
-
-    </div>
+      <Pagination
+        store={tournaments}
+        setPage={setPage}
+        totalCount={totalCount}
+        limit={limit}
+        page={page}
+      />
+    </>
   );
 }
 

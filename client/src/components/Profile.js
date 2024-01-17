@@ -1,25 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../css/tournaments.css";
-import {UserStore} from "../store/UserStore";
-import {jwtDecode} from "jwt-decode";
-import {getData} from "../api/userApi";
-import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png";
-import {Spinner} from "react-bootstrap";
-import {Link} from "react-router-dom";
-import {PROFILE_ROUTE} from "../utils/consts";
+import { UserStore } from "../store/UserStore";
+import { jwtDecode } from "jwt-decode";
+import { getData } from "../api/userApi";
+import defaultLogo from "../img/defaultLogo.png";
+import { Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { PROFILE_ROUTE } from "../utils/consts";
 
-function Profile({setAuth,isAuth,setUser}) {
+function Profile({ setAuth, isAuth, setUser }) {
+  const user = UserStore((state) => state._user);
+  const [loading, setLoading] = useState(true);
 
-
-    const user = UserStore(state=>state._user);
-    const [loading,setLoading]=useState(true);
-
-
-    const exit = ()=>{
-        setAuth(false);
-        setUser({});
-        localStorage.setItem('token','');
-    }
+  const exit = () => {
+    setAuth(false);
+    setUser({});
+    localStorage.setItem("token", "");
+  };
 
   return (
     <section className="profile">
@@ -28,33 +25,32 @@ function Profile({setAuth,isAuth,setUser}) {
       </div>
       <div className="profile_info">
         <div className="profile_picture">
-          <img src={user.logo?(process.env.REACT_APP_API_URL+user.logo):defaultLogo} alt="" />
+          <img
+            src={
+              user.logo
+                ? process.env.REACT_APP_API_URL + user.logo
+                : defaultLogo
+            }
+            alt=""
+          />
         </div>
-        <p className="nickname">{user.userName?user.userName:"defaulName"}</p>
+        <p className="nickname">
+          {user.userName ? user.userName : "defaulName"}
+        </p>
         <p className="username_info">Команда:OG</p>
-        <p className="username_info">Rating: 3400</p>
       </div>
 
+      <div className="tournaments_search">
+        <Link to={PROFILE_ROUTE}>
+          <div className="profile_buttons">Настройки</div>
+        </Link>
+        <div className="profile_buttons">Личные сообщения</div>
 
-        <div className="tournaments_search">
-            <Link to={PROFILE_ROUTE}>
-        <div className="profile_buttons">
-            Настройки
-        </div>
-            </Link>
-        <div className="profile_buttons">
-          Личные сообщения
-        </div>
-
-
-        <div className="profile_buttons">
-          Смена ника
-        </div>
-
+        <div className="profile_buttons">Смена ника</div>
       </div>
-        <button onClick={exit} className="profile_buttons">
-            Выйти
-        </button>
+      <button onClick={exit} className="profile_buttons">
+        Выйти
+      </button>
     </section>
   );
 }

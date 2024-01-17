@@ -2,6 +2,7 @@
 @import "uikit";
 @import "navigation";
 @import "profile";
+@import "loading";
 
 main {
   display: flex;
@@ -58,10 +59,6 @@ main {
   margin-top: 24px;
   margin-left: 53px;
   margin-right: 29px;
-  p {
-    margin-bottom: 24px;
-    font-size: 15px;
-  }
 }
 .command_stat {
   display: flex;
@@ -242,7 +239,7 @@ main {
     height: 50px;
   }
 }
-.applyToJoinButton{
+.applyToJoinButton {
   border: 1px solid gray;
   height: 50px;
   width: 25%;
@@ -259,7 +256,7 @@ main {
     transform: translateY(2px);
   }
 }
-.commandIsFull{
+.commandIsFull {
   border: 1px solid gray;
   height: 50px;
   width: 25%;
@@ -267,11 +264,10 @@ main {
   padding-top: 15px;
   font-size: 14px;
 }
-.team_logo{
-  width:30%;
-  img{
+.team_logo {
+  width: 30%;
+  img {
     max-width: 100%;
     max-height: 100%;
-
   }
 }

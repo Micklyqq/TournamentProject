@@ -2,11 +2,13 @@
 @import "uikit";
 @import "navigation";
 @import "profile";
+@import "loading";
 
 main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: fit-content;
 }
 .commands_menu {
   display: flex;
@@ -84,7 +86,7 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     width: 911px;
-    height: 200px;
+    height: fit-content;
     .command_block {
       display: flex;
       flex-direction: row;
@@ -102,12 +104,11 @@ main {
 
         width: 25%;
         height: 90%;
-        img{
+        img {
           max-width: 100%;
           max-height: 100%;
           object-fit: cover;
           object-position: center;
-
         }
         p {
           color: #d6d6d9;

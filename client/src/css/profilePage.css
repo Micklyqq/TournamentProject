@@ -28,4 +28,11 @@
   transform: translateY(2px);
 }
 
-/*# sourceMappingURL=profilePage.css.map */
+.buttonsBlockProfile {
+  min-width: 350px;
+}
+
+.avatarProfile {
+  min-width: 300px;
+  max-width: 500px;
+}/*# sourceMappingURL=profilePage.css.map */

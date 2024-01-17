@@ -1,23 +1,44 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import "../css/commands.css";
 import CommandsList from "../components/CommandsList";
 import Authorization from "../components/Authorization";
-import {Link} from "react-router-dom";
-import {COMMAND_CREATE} from "../utils/consts";
-import {CommandStore} from "../store/CommandStore";
-import {getTeams} from "../api/commandApi";
-
+import { Link } from "react-router-dom";
+import { COMMAND_CREATE } from "../utils/consts";
+import { CommandStore } from "../store/CommandStore";
+import { getTeams } from "../api/commandApi";
+import Pagination from "../components/Pagination";
 function CommandsPage() {
-  const commands = CommandStore(state => state._commands);
-  const setCommand = CommandStore(state=>state.setCommand);
-
+  const [loading, setLoading] = useState(true);
+  const commands = CommandStore((state) => state._commands);
+  const setCommand = CommandStore((state) => state.setCommand);
+  const page = CommandStore((state) => state._page);
+  const setPage = CommandStore((state) => state.setPage);
+  const totalCount = CommandStore((state) => state._totalCount);
+  const setTotalCount = CommandStore((state) => state.setTotalCount);
+  const limit = CommandStore((state) => state._limit);
 
   useEffect(() => {
-    getTeams().then((data)=>setCommand(data));
-
+    getTeams(1, 6)
+      .then((data) => {
+        setCommand(data.rows);
+        setTotalCount(data.count);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    setLoading(true);
+    getTeams(page, 6)
+      .then((data) => {
+        setCommand(data.rows);
+        setTotalCount(data.count);
+      })
+      .finally(() => setLoading(false));
+  }, [page]);
 
+  if (loading) {
+    return <div className="loading">Подождите,идёт загрузка...</div>;
+  }
   return (
     <>
       <main>
@@ -37,11 +58,7 @@ function CommandsPage() {
               Поиск
             </button>
             <Link to={COMMAND_CREATE}>
-            <div
-              className="create_command"
-            >
-              Создать команду
-            </div>
+              <div className="create_command">Создать команду</div>
             </Link>
           </form>
           <div className="commands_list">
@@ -52,6 +69,13 @@ function CommandsPage() {
         </section>
         <Authorization />
       </main>
+      <Pagination
+        store={commands}
+        setPage={setPage}
+        totalCount={totalCount}
+        limit={limit}
+        page={page}
+      />
     </>
   );
 }

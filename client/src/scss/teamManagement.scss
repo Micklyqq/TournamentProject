@@ -1,26 +1,28 @@
-.infoBlock{
+.infoBlock {
   border: 1px solid gray;
   flex-grow: 25;
   font-size: 30px;
-  p{
-    margin-top: 15px;
-  }
 }
-.avatarTeam{
+.avatarTeam {
   display: flex;
   flex-direction: row;
   max-width: 20%;
+  margin-left: 5px;
+  margin-top: 10px;
 }
-.avatar{
+.teamName {
+  margin-left: 5px;
+}
+.avatar {
   max-width: 50%;
 }
-.changeIcon{
+.changeIcon {
   display: inline-block;
   cursor: pointer;
-  #logo_input{
+  #logo_input {
     display: none;
   }
-  #name_input{
+  #name_input {
     width: 260px;
     height: 38.64px;
     background-color: #2b2c31;
@@ -40,7 +42,7 @@
   }
 }
 
-.submitButton{
+.submitButton {
   border: 1px solid gray;
   height: 50px;
   text-align: center;
@@ -62,43 +64,22 @@
 .team_composition_management {
   border-collapse: collapse;
   margin-top: 37px;
+  min-width: 70%;
+  margin: auto;
   tr {
     &:nth-of-type(1) {
       background-color: #26272c;
       font-size: 11px;
-      color: #777779;
+      color: #ffffff;
     }
     background-color: #2b2c31;
     font-size: 13px;
     border-top: 2px solid #26272c;
   }
   td {
-    &:nth-of-type(1) {
-      width: 291px;
-    }
-    &:nth-of-type(2) {
-      width: 312px;
-    }
-    &:nth-of-type(3) {
-      width: 80px;
-    }
-    &:nth-of-type(4) {
-      width: 148px;
-    }
     div {
       display: flex;
       flex-direction: row;
-      div {
-        display: flex;
-        flex-direction: column;
-        line-height: 15px;
-        padding: 10px;
-        p {
-          &:nth-last-of-type(1) {
-            color: #777779;
-          }
-        }
-      }
     }
   }
   img {
@@ -107,7 +88,103 @@
   }
 }
 
-
-h2{
+h2 {
   font-size: 20px;
+}
+
+.teammatesListImage {
+  min-width: 100px;
+}
+
+.teammatesListUsername {
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.kickButton {
+  background-color: #3e3f46;
+  min-width: 150px;
+  height: 35px;
+  margin-left: auto;
+  margin-right: 35px;
+  margin-top: 5px;
+  font-size: 16px;
+  p {
+    padding-left: 30%;
+    padding-top: 5%;
+  }
+
+  &:hover {
+    background-color: #d42c2f;
+    color: #ffffff;
+  }
+  &:active {
+    background-color: #d42c2f;
+    transform: translateY(2px);
+  }
+  cursor: pointer;
+}
+
+.delTeamButton {
+  background-color: #3e3f46;
+  max-width: 150px;
+  height: 35px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 5px;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #d42c2f;
+    color: #ffffff;
+  }
+  &:active {
+    background-color: #d42c2f;
+    transform: translateY(2px);
+  }
+  cursor: pointer;
+}
+
+.delButtonsModal {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  height: 50px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.yesModalDel {
+  background-color: #3e3f46;
+
+  flex: 1;
+
+  &:hover {
+    background-color: #1cd32c;
+    color: #ffffff;
+  }
+  &:active {
+    background-color: #1cd32c;
+    transform: translateY(2px);
+  }
+  cursor: pointer;
+}
+
+.noModalDel {
+  background-color: #3e3f46;
+
+  flex: 1;
+  margin-left: 5px;
+
+  &:hover {
+    background-color: #d42c2f;
+    color: #ffffff;
+  }
+  &:active {
+    background-color: #d42c2f;
+    transform: translateY(2px);
+  }
+  cursor: pointer;
 }

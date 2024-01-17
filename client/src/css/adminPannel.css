@@ -1,0 +1,160 @@
+.adminPannel {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  background-color: #2b2c31;
+  color: #c2c2c4;
+}
+
+.adminPannelElement {
+  flex-grow: 5;
+  border: 1px solid gray;
+  height: 50px;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.adminPannelElement:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.adminPannelElement:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+.backArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid gray;
+  width: 70px;
+  margin-top: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.backArrow:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.backArrow:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+.commandsAdmin_list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.commandAdmin_image {
+  max-width: 15%;
+}
+
+.commandAdmin_block {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  border: 1px solid gray;
+  width: 70%;
+}
+
+.adminCommands {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  width: 30%;
+  font-size: 16px;
+  border: 1px solid gray;
+}
+
+.adminCommandsElem {
+  margin-top: 3px;
+  width: 100%;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+.adminCommandsElem:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.adminCommandsElem:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+.paginationAdmin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 50%;
+  margin-left: 300px;
+  margin-top: 20px;
+  height: auto;
+}
+
+.pageItemAdmin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 40px;
+  background-color: #2b2c31;
+  border: 1px solid #585859;
+  cursor: pointer;
+}
+.pageItemAdmin:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.pageItemAdmin:active {
+  background-color: #d42c2f;
+  color: #ffffff;
+  border: 1px solid #878787;
+}
+
+.pageItemAdmin:first-child {
+  border-right: 1px solid #585859;
+}
+
+.giveRoleHeader {
+  font-size: 30px;
+}
+
+.giveRoleText {
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.userRoleList {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.selectRole {
+  display: flex;
+  flex-direction: column;
+}
+
+.giveRoleButton {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  background-color: #2b2c31;
+  border: 1px solid #7c7c7e;
+  cursor: pointer;
+}
+.giveRoleButton:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.giveRoleButton:active {
+  background-color: #d42c2f;
+  color: #ffffff;
+  border: 1px solid #878787;
+}/*# sourceMappingURL=adminPannel.css.map */

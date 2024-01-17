@@ -3,14 +3,17 @@
   flex-grow: 25;
   font-size: 30px;
 }
-.infoBlock p {
-  margin-top: 15px;
-}
 
 .avatarTeam {
   display: flex;
   flex-direction: row;
   max-width: 20%;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.teamName {
+  margin-left: 5px;
 }
 
 .avatar {
@@ -64,6 +67,8 @@
 .team_composition_management {
   border-collapse: collapse;
   margin-top: 37px;
+  min-width: 70%;
+  margin: auto;
 }
 .team_composition_management tr {
   background-color: #2b2c31;
@@ -73,32 +78,11 @@
 .team_composition_management tr:nth-of-type(1) {
   background-color: #26272c;
   font-size: 11px;
-  color: #777779;
-}
-.team_composition_management td:nth-of-type(1) {
-  width: 291px;
-}
-.team_composition_management td:nth-of-type(2) {
-  width: 312px;
-}
-.team_composition_management td:nth-of-type(3) {
-  width: 80px;
-}
-.team_composition_management td:nth-of-type(4) {
-  width: 148px;
+  color: #ffffff;
 }
 .team_composition_management td div {
   display: flex;
   flex-direction: row;
-}
-.team_composition_management td div div {
-  display: flex;
-  flex-direction: column;
-  line-height: 15px;
-  padding: 10px;
-}
-.team_composition_management td div div p:nth-last-of-type(1) {
-  color: #777779;
 }
 .team_composition_management img {
   width: 50px;
@@ -109,4 +93,93 @@ h2 {
   font-size: 20px;
 }
 
-/*# sourceMappingURL=teamManagement.css.map */
+.teammatesListImage {
+  min-width: 100px;
+}
+
+.teammatesListUsername {
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.kickButton {
+  background-color: #3e3f46;
+  min-width: 150px;
+  height: 35px;
+  margin-left: auto;
+  margin-right: 35px;
+  margin-top: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.kickButton p {
+  padding-left: 30%;
+  padding-top: 5%;
+}
+.kickButton:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.kickButton:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+.delTeamButton {
+  background-color: #3e3f46;
+  max-width: 150px;
+  height: 35px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.delTeamButton:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.delTeamButton:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}
+
+.delButtonsModal {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  height: 50px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.yesModalDel {
+  background-color: #3e3f46;
+  flex: 1;
+  cursor: pointer;
+}
+.yesModalDel:hover {
+  background-color: #1cd32c;
+  color: #ffffff;
+}
+.yesModalDel:active {
+  background-color: #1cd32c;
+  transform: translateY(2px);
+}
+
+.noModalDel {
+  background-color: #3e3f46;
+  flex: 1;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.noModalDel:hover {
+  background-color: #d42c2f;
+  color: #ffffff;
+}
+.noModalDel:active {
+  background-color: #d42c2f;
+  transform: translateY(2px);
+}/*# sourceMappingURL=teamManagement.css.map */

@@ -2,11 +2,13 @@
 @import "uikit";
 @import "navigation";
 @import "profile";
+@import "loading";
 
 main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: fit-content;
 }
 
 .tournaments {
@@ -83,7 +85,7 @@ main {
     display: flex;
     flex-direction: column;
     width: 911px;
-    height: 200px;
+    height: fit-content;
     .tournament_block {
       display: flex;
       flex-direction: row;
@@ -99,12 +101,11 @@ main {
       margin-top: 10px;
       word-wrap: break-word;
       margin-left: 20px;
-      img{
+      img {
         max-width: 100%;
         max-height: 100%;
         object-fit: cover;
         object-position: center;
-
       }
     }
 

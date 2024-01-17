@@ -1,4 +1,4 @@
-.profileMain{
+.profileMain {
   display: flex;
   flex-direction: row;
   height: 1000px;
@@ -6,10 +6,10 @@
   background-color: #2b2c31;
   color: #c2c2c4;
 }
-.buttonsBlockProfile{
+.buttonsBlockProfile {
   border: 1px solid gray;
   flex-grow: 5;
-  div{
+  div {
     border: 1px solid gray;
     height: 50px;
     text-align: center;
@@ -24,6 +24,13 @@
       background-color: #d42c2f;
       transform: translateY(2px);
     }
-
   }
+}
+.buttonsBlockProfile {
+  min-width: 350px;
+}
+
+.avatarProfile {
+  min-width: 300px;
+  max-width: 500px;
 }

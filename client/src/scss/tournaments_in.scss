@@ -2,6 +2,7 @@
 @import "uikit";
 @import "navigation";
 @import "profile";
+@import "loading";
 main {
   display: flex;
   flex-direction: row;
@@ -16,9 +17,11 @@ main {
 }
 
 .image_info {
-  height: 107px;
-  margin-left: 53px;
+  display: flex;
+  flex-direction: row;
+  max-width: 40%;
 
+  margin-left: 53px;
 }
 .header1 {
   font-size: 30px;
@@ -29,6 +32,7 @@ main {
 .image_info_text {
   display: flex;
   flex-direction: row;
+  flex: 2;
 }
 .image_info_1 {
   margin-left: 24px;
@@ -41,11 +45,12 @@ main {
   font-size: 13px;
 }
 
-.tournament_logo{
-  max-width: 10%;
-  max-height: 50%;
+.tournament_logo {
+  max-width: 50%;
+  max-height: 20%;
+  flex: 6;
+
   img {
-    float: left;
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
@@ -58,13 +63,6 @@ main {
   margin-right: 29px;
   max-width: 100%;
   word-wrap: break-word;
-
-  p {
-    margin-top: 20px;
-    margin-bottom: 24px;
-    font-size: 15px;
-    line-height:1.7;
-  }
 }
 
 .commandsListInTournament {
@@ -92,10 +90,10 @@ main {
   height: 100px;
   background-color: #2b2c31;
   margin-top: 20px;
-  .team_image{
-    max-width: 13%;
+  .team_image {
+    max-width: 25%;
 
-    img{
+    img {
       max-width: 100%;
       max-height: 100%;
       object-fit: cover;
@@ -110,6 +108,43 @@ main {
     font-size: 9px;
   }
 }
+
+.winner_element {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 45%;
+  height: 100px;
+  background-color: #2b2c31;
+  margin-top: 20px;
+  .team_image {
+    max-width: 30%;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  h3 {
+    font-size: 15px;
+    text-align: center;
+  }
+  p {
+    font-size: 9px;
+  }
+}
+
+.tournament_end_text {
+  font-size: 26px;
+}
+
+.tournamentDescription {
+  margin-right: 20px;
+}
 .command_button {
   display: flex;
   flex-direction: row;
@@ -119,6 +154,7 @@ main {
   height: 19px;
   background-color: #333438;
   border-radius: 5px;
+  cursor: pointer;
   a {
     color: #c2c2c4;
   }
@@ -133,19 +169,16 @@ main {
   }
 }
 
-.matchList{
-
+.matchList {
 }
 
-.match{
+.match {
   display: flex;
   flex-direction: row;
   margin-bottom: 15px;
-
 }
 
-
-.team{
+.team {
   background-color: #333438;
   width: 70%;
   height: 70px;
@@ -153,38 +186,38 @@ main {
   display: flex;
   flex-direction: row;
 }
-.teamLogo{
-  img{
+.teamLogo {
+  img {
     max-width: 100%;
-    max-height:50% ;
+    max-height: 50%;
     display: inline-block;
   }
 }
 
-.teamInfo{
+.teamInfo {
   display: flex;
   flex-direction: row;
 
   width: 50%;
 }
-.teamName{
+.teamName {
   margin-right: 20px;
 }
 
-.versus{
-background-color: #454445;
+.versus {
+  background-color: #454445;
   width: 3%;
   text-align: center;
   padding-top: 20px;
 }
 
-.winButton{
+.winButton {
   background-color: #878787;
   width: 20%;
   height: 50%;
   margin-top: 10px;
   margin-left: 20%;
-cursor: pointer;
+  cursor: pointer;
   &:hover {
     background-color: #2cd434;
     color: #ffffff;
@@ -196,10 +229,10 @@ cursor: pointer;
   }
 }
 
-.Winner{
+.Winner {
   background-color: #2cd434;
 }
-.blank_info{
+.blank_info {
   margin-top: 20px;
   font-size: 30px;
   margin-bottom: 50px;

@@ -1,57 +1,68 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../css/commands_in.css";
 import { useParams } from "react-router-dom";
 import commandImage from "../img/TS.png";
 import international from "../img/int.png";
-import {findAllTeammates, getOneTeam} from "../api/commandApi";
-import {UserStore} from "../store/UserStore";
-import {createTeamNotification, getOneTeamNotification} from "../api/notificationApi";
-import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png"
+import { findAllTeammates, getOneTeam } from "../api/commandApi";
+import { UserStore } from "../store/UserStore";
+import {
+  createTeamNotification,
+  getOneTeamNotification,
+} from "../api/notificationApi";
+import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png";
 function CommandIn() {
-
- const [teammates,setTeammates] = useState({})
-  const user = UserStore(state=>state._user);
- const [command,setCommand] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [teammates, setTeammates] = useState({});
+  const user = UserStore((state) => state._user);
+  const [command, setCommand] = useState({});
   const { id } = useParams();
   useEffect(() => {
-    getOneTeam(id).then((data)=>setCommand(data));
-    findAllTeammates(id).then((data)=>setTeammates(data))
-
+    getOneTeam(id)
+      .then((data) => setCommand(data))
+      .finally(() => setLoading(false));
+    findAllTeammates(id).then((data) => setTeammates(data));
   }, []);
 
-  const Click = async ()=>{
+  const Click = async () => {
     try {
-      if(teammates&&teammates.length<5&&user.teamId===null){
-        const notificationData = await getOneTeamNotification(command.id, user.id);
+      if (teammates && teammates.length < 5 && user.teamId === null) {
+        const notificationData = await getOneTeamNotification(
+          command.id,
+          user.id
+        );
         if (notificationData === null) {
           await createTeamNotification(user.id, command.id);
           alert("Заявка была подана!");
         } else {
           alert("Вы уже подали заявку!");
         }
+      } else {
+        alert("Команда уже набрала достаточное количество игроков!");
       }
-      else{alert("Команда уже набрала достаточное количество игроков!")}
     } catch (error) {
-
       console.error(error);
     }
-
+  };
+  if (loading) {
+    return <div className="loading">Подождите,идёт загрузка...</div>;
   }
   return (
     <main>
       <section className="commands_info">
-        <h1>
-          Команда {command?.name}
-        </h1>
+        <h1>Команда {command?.name}</h1>
         <div className="main_info">
           <div className="team_logo">
-            <img src={process.env.REACT_APP_API_URL+command.logo} alt="" />
+            <img src={process.env.REACT_APP_API_URL + command.logo} alt="" />
           </div>
         </div>
         <div className="info_big">
-          {(teammates&&teammates.length<5&&user.teamId===null)?
-              (<div className="applyToJoinButton" onClick={Click}>Подать заявку на вступление</div>)
-              :(<div className="commandIsFull">Вы не можете подать заявку</div>)}
+          {teammates && teammates.length < 5 && user.teamId === null ? (
+            <div className="applyToJoinButton" onClick={Click}>
+              Подать заявку на вступление
+            </div>
+          ) : (
+            <div className="commandIsFull">Вы не можете подать заявку</div>
+          )}
         </div>
 
         <h2>Состав </h2>
@@ -63,13 +74,25 @@ function CommandIn() {
               <td>Возраст</td>
               <td>Принят</td>
             </tr>
-            {teammates && teammates.length > 0 && teammates.map((item) => (
-                <tr key={item.id}> {/* Добавлен key для каждого элемента в массиве */}
+            {teammates &&
+              teammates.length > 0 &&
+              teammates.map((item) => (
+                <tr key={item.id}>
+                  {" "}
+                  {/* Добавлен key для каждого элемента в массиве */}
                   <td>
                     <div>
-                      <img src={item.logo ? process.env.REACT_APP_API_URL + item.logo : defaultLogo} alt="" />
+                      <img
+                        src={
+                          item.logo
+                            ? process.env.REACT_APP_API_URL + item.logo
+                            : defaultLogo
+                        }
+                        alt=""
+                      />
                       <div>
-                        <p>{item.userName ? item.userName : "defaultName"}</p> {/* Использование item.userName вместо teammates.userName */}
+                        <p>{item.userName ? item.userName : "defaultName"}</p>{" "}
+                        {/* Использование item.userName вместо teammates.userName */}
                       </div>
                     </div>
                   </td>
@@ -77,8 +100,7 @@ function CommandIn() {
                   <td>25</td>
                   <td>03.11.2021</td>
                 </tr>
-            ))}
-
+              ))}
           </tbody>
         </table>
         <h2>Игры </h2>
