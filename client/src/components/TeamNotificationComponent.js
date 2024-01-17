@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getData, updateUser } from "../api/userApi";
 import "../css/TeamNotificationComponent.css";
-import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png";
+import defaultLogo from "../img/defaultLogo.png";
 import { joinTeam } from "../api/commandApi";
 import { deleteTeamNotification } from "../api/notificationApi";
 

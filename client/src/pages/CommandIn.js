@@ -9,7 +9,7 @@ import {
   createTeamNotification,
   getOneTeamNotification,
 } from "../api/notificationApi";
-import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png";
+import defaultLogo from "../img/defaultLogo.png";
 function CommandIn() {
   const [loading, setLoading] = useState(true);
   const [teammates, setTeammates] = useState({});
