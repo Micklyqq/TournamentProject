@@ -1,5 +1,5 @@
-import defaultLogo from "../static/8dd98655-043f-401e-b331-0b4e1bf1f647.png";
-import changeIcon from "../static/change.svg";
+import defaultLogo from "../img/defaultLogo.png";
+import changeIcon from "../img/change.svg";
 import React, { useEffect, useState } from "react";
 import { UserStore } from "../store/UserStore";
 import {

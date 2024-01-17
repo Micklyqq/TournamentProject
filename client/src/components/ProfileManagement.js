@@ -1,5 +1,5 @@
 import defaultLogo from "../img/defaultLogo.png";
-import changeIcon from "../static/change.svg";
+import changeIcon from "../img/change.svg";
 import React, { useState } from "react";
 import { UserStore } from "../store/UserStore";
 import { updateUser } from "../api/userApi";
